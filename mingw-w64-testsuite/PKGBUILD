@@ -1,0 +1,55 @@
+pkgname=mingw-w64-testsuite
+pkgver=0
+pkgrel=1
+license=('GPL')
+arch=(any)
+pkgdesc='test suite (mingw-w64)'
+url="https://github.com/xantares/pkgtest"
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-qt4' 'mingw-w64-confuse' 'mingw-w64-dlfcn' 'mingw-w64-libgnurx' 'mingw-w64-libftdi1' 'mingw-w64-lapack' 'mingw-w64-libxml2' 'mingw-w64-libsvm' 'mingw-w64-nlopt' 'mingw-w64-intel-tbb' 'xorg-server-xvfb' 'mingw-w64-cmake' 'binfmt-wine' 'git')
+options=('!libtool' '!strip')
+
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+build() {
+  rm -rf pkgtest-$pkgver
+  git clone https://github.com/xantares/pkgtest.git pkgtest-$pkgver
+  cd pkgtest-$pkgver
+  for _arch in ${_architectures}; do
+    unset LDFLAGS CFLAGS CPPFLAGS
+    export PKG_CONFIG_LIBDIR=/usr/${_arch}/lib/pkgconfig/
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    ${_arch}-cmake -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+    ..
+    make
+    popd
+  done
+}
+
+check () {
+  export DISPLAY=:99
+  Xvfb -nolisten tcp -screen 0 1024x768x24 $DISPLAY &
+  XVFB_PID=`echo $!`
+
+  cd pkgtest-$pkgver
+  for _arch in ${_architectures}; do
+    pushd "build-${_arch}"
+    cp /usr/${_arch}/*/*.dll .
+    cp /usr/${_arch}/lib/*.dll .
+    ctest
+    popd
+  done
+
+  kill $XVFB_PID || true  
+}
+
+package() {
+  cd pkgtest-$pkgver
+  for _arch in ${_architectures}; do
+    pushd "build-${_arch}"
+    make DESTDIR=$pkgdir install
+    ${_arch}-strip -x -g $pkgdir/usr/${_arch}/bin/*.exe
+    popd
+  done
+}
+

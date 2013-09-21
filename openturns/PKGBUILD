@@ -1,0 +1,38 @@
+# Maintainer: xantares <xantares09 at hotmail dot com>
+
+pkgname=('openturns')
+pkgver=1.2
+pkgrel=1
+pkgdesc="Uncertainty treatment library in C++/Python"
+license=('LGPL3')
+arch=('i686' 'x86_64')
+url="http://www.openturns.org/"
+depends=('lapack' 'libxml2' 'intel-tbb' 'python')
+optdepends=('r: plotting and statistical tests'
+            'python-matplotlib: nicer plotting')
+makedepends=('lapack' 'libxml2' 'intel-tbb' 'r' 'python' 'cmake' 'gcc' 'gcc-fortran' 'bison' 'flex' 'swig')
+source=("http://downloads.sourceforge.net/sourceforge/openturns/openturns/openturns-$pkgver.tar.bz2")
+md5sums=('d961d0af417286e15954549327de220b')
+
+build() {
+  cd $pkgname-$pkgver
+  2to3 -w python/test/t_*.py
+  R CMD INSTALL --library=$PWD utils/rot_1.4.5.tar.gz
+  export R_LIBS=$PWD
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+          -DSYSTEM_INSTALL=ON \
+          -DOPENTURNS_SYSCONFIG_PATH=/etc
+  make
+}
+
+check() {
+  cd $srcdir/$pkgname-$pkgver
+}
+
+package() {
+  cd $pkgname-$pkgver
+  mkdir -p $pkgdir/usr/lib/R/library/
+  cp -r rot $pkgdir/usr/lib/R/library/
+  make DESTDIR=$pkgdir install
+}
+
