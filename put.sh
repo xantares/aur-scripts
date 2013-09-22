@@ -4,7 +4,7 @@ if test "$#" -lt 1
 then
   pkgs=`cat package_list.txt`
 else
-  pkgs=$1
+  pkgs=$*
 fi
 
 for pkg in $pkgs
