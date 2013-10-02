@@ -10,6 +10,7 @@ mingw-w64-libftdi1
 mingw-w64-libgnurx
 mingw-w64-libsvm
 mingw-w64-libusbx
+mingw-w64-libzip
 mingw-w64-nlopt
 mingw-w64-qscintilla
 mingw-w64-qsint
