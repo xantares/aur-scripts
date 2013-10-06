@@ -2,7 +2,7 @@
 
 pkgname=('openturns')
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncertainty treatment library in C++/Python"
 license=('LGPL3')
 arch=('i686' 'x86_64')
@@ -26,13 +26,13 @@ build() {
 }
 
 check() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
 }
 
 package() {
   cd $pkgname-$pkgver
-  mkdir -p $pkgdir/usr/lib/R/library/
-  cp -r rot $pkgdir/usr/lib/R/library/
-  make DESTDIR=$pkgdir install
+  mkdir -p "$pkgdir"/usr/lib/R/library/
+  cp -r rot "$pkgdir"/usr/lib/R/library/
+  make DESTDIR="$pkgdir" install
 }
 

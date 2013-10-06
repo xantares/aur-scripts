@@ -7,6 +7,8 @@ mingw-w64-dlfcn
 mingw-w64-intel-tbb
 mingw-w64-lapack
 mingw-w64-libftdi1
+mingw-w64-libgcrypt
+mingw-w64-libglade
 mingw-w64-libgnurx
 mingw-w64-libsvm
 mingw-w64-libusbx
@@ -17,8 +19,11 @@ mingw-w64-qsint
 mingw-w64-testsuite
 mixmod
 nlopt
-openturns
-openturns-doc
-openturns-svm
+
+
 qsint
 ttimg-utils
+
+openturns-doc
+openturns
+openturns-svm
