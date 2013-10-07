@@ -1,9 +1,9 @@
-ahmed
 binfmt-wine
 brainparty
 cmake-lint
 mingw-w64-confuse
 mingw-w64-dlfcn
+mingw-w64-eigen3
 mingw-w64-intel-tbb
 mingw-w64-lapack
 mingw-w64-libftdi1
@@ -19,11 +19,8 @@ mingw-w64-qsint
 mingw-w64-testsuite
 mixmod
 nlopt
-
-
 qsint
 ttimg-utils
-
 openturns-doc
 openturns
 openturns-svm

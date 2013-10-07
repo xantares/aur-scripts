@@ -10,6 +10,7 @@ fi
 for pkg in $pkgs
 do
   pushd $pkg
+  rm *.src.tar.gz
   makepkg --source --force
   aurploader --auto --keep-cookiejar
   popd
