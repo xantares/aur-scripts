@@ -1,6 +1,7 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 
-pkgname=mingw-x64-libxslt
+_pkgname=libxslt
+pkgname=mingw-w64-$_pkgname
 pkgver=1.1.28
 pkgrel=2
 pkgdesc="XML stylesheet transformation library (mingw-w64)"
@@ -10,7 +11,7 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-libxml2' 'mingw-w64-libgcrypt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-libxml2' 'mingw-w64-libgcrypt')
 options=('!strip' '!libtool' '!buildflags')
-source=("ftp://xmlsoft.org/libxslt/libxslt-${pkgver}.tar.gz"
+source=("ftp://xmlsoft.org/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 	'mingw32-libxslt-use-correct-mkdir.patch')
 md5sums=('9667bf6f9310b957254fdcf6596600b7'
          'd9a2f525f8f703d8e2000000dcaa943e')
@@ -23,7 +24,7 @@ prepare() {
 
 build()
 {
-  cd "$srcdir/libxslt-${pkgver}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
   unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
@@ -40,7 +41,7 @@ build()
 package()
 {
   for _arch in ${_architectures}; do
-    cd "$srcdir/libxslt-${pkgver}/build-${_arch}"
+    cd "$srcdir/${_pkgname}-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip -g -x "$pkgdir"/usr/${_arch}/bin/*.dll
