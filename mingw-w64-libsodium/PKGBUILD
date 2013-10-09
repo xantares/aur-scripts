@@ -21,8 +21,8 @@ prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   patch -Np1 -i "$srcdir"/libsodium-def.patch
   autoreconf -vfi
-  rm "$srcdir/${_pkgname}-${pkgver}"/src/libsodium/include/sodium/crypto_stream_salsa20.h
-  rm "$srcdir/${_pkgname}-${pkgver}"/src/libsodium/include/sodium/crypto_scalarmult_curve25519.h
+  rm src/libsodium/include/sodium/crypto_stream_salsa20.h
+  rm src/libsodium/include/sodium/crypto_scalarmult_curve25519.h
 }
 
 build() {
