@@ -21,6 +21,8 @@ prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   patch -Np1 -i "$srcdir"/libsodium-def.patch
   autoreconf -vfi
+  rm "$srcdir/${_pkgname}-${pkgver}"/src/libsodium/include/sodium/crypto_stream_salsa20.h
+  rm "$srcdir/${_pkgname}-${pkgver}"/src/libsodium/include/sodium/crypto_scalarmult_curve25519.h
 }
 
 build() {
@@ -39,9 +41,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    rm "$pkgdir"/usr/${_arch}/*.exe
+    rm "$pkgdir"/usr/${_arch}/lib/*.la
+    rm "$pkgdir"/usr/${_arch}/bin/*.def
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/lib/*.a
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
 
