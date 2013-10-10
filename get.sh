@@ -9,5 +9,5 @@ fi
 
 for pkg in $pkgs
 do
-  yaourt -G $pkg
+  yaourt -G $pkg --noconfirm
 done
