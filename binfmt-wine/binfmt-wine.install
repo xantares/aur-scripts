@@ -1,8 +1,8 @@
 post_install() {
-  update-binfmts --install DOSWin /usr/bin/wine --magic MZ
+  systemctl restart systemd-binfmt 
 }
 
 post_remove() {
-  update-binfmts --disable DOSWin
+  echo "-- binfmt binary formats will be updated at reboot"
 }
 
