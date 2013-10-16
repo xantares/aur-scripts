@@ -9,6 +9,7 @@ pkgdesc="OpenType text shaping engine"
 arch=('any')
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
+depends=('mingw-w64-crt')
 makedepends=(glib2 freetype2 graphite cairo icu)
 options=(!libtool)
 source=(http://www.freedesktop.org/software/harfbuzz/release/${pkgbase}-${pkgver}.tar.bz2)
