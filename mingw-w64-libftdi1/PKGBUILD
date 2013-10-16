@@ -1,3 +1,5 @@
+# Maintainer: xantares <xantares09 at hotmail dot com>
+
 pkgname=mingw-w64-libftdi1
 pkgver=1.0
 pkgrel=2
