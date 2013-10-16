@@ -1,0 +1,37 @@
+# Maintainer: xantares <xantares09 at hotmail dot com>
+
+_pkgname=icu
+pkgname=mingw-w64-$_pkgname
+pkgver=51.2
+pkgrel=1
+pkgdesc="International Components for Unicode library (mingw-w64)"
+arch=('any')
+url="http://www.icu-project.org/"
+license=('custom:"icu"')
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-gcc')
+source=("http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz")
+md5sums=('072e501b87065f3a0ca888f1b5165709')
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+build() {
+  cd "$srcdir/$_pkgname/source"
+  for _arch in ${_architectures}; do
+    unset LDFLAGS
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    ../configure --prefix=/usr/${_arch} \
+                 --host=${_arch}
+    make
+    popd
+  done
+}
+
+package() {
+  cd ${srcdir}/$_pkgname/source
+  for _arch in ${_architectures}; do
+    cd "$srcdir/$_pkgname/source/build-${_arch}"
+    make install DESTDIR="$pkgdir"
+#     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+#     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+  done
+}
