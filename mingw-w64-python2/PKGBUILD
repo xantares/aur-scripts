@@ -76,7 +76,7 @@ prepare() {
   # rather than copies shipped in the tarball
   rm -r Modules/expat
   rm -r Modules/zlib
-  rm -r Modules/_ctypes/{darwin,libffi}*
+  #rm -r Modules/_ctypes/{darwin,libffi}*
   
 }
 
@@ -109,8 +109,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-#     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-#     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    install -m0644 libpython${_pybasever}.a "$pkgdir"/usr/${_arch}/lib/ 
+    rm -rf "$pkgdir"/usr/${_arch}/share
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 #   cd "${srcdir}/Python-${pkgver}"
 #   make DESTDIR="${pkgdir}" altinstall maninstall
@@ -145,6 +147,4 @@ package() {
 #   # clean-up reference to build directory
 #   sed -i "s#${srcdir}/Python-${pkgver}:##" "${pkgdir}"/usr/lib/python${_pybasever}/config/Makefile
 # 
-#   # license
-#   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
