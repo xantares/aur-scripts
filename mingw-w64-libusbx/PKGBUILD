@@ -1,7 +1,7 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 
 _pkgname=libusbx
-pkgname=mingw-w64-i$_pkgname
+pkgname=mingw-w64-$_pkgname
 pkgver=1.0.17
 pkgrel=2
 depends=('mingw-w64-crt')
