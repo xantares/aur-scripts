@@ -10,7 +10,7 @@ license=('GPL')
 arch=('any')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-gettext')
-source=("ftp://ftp.gnu.org/gnu/gdbm/${_pkgname}-${pkgver}.tar.gz"
+source=("http://ftp.gnu.org/gnu/gdbm/${_pkgname}-${pkgver}.tar.gz"
         'gdbm-1.10-zeroheaders.patch'
         'gdbm-win32-support.patch')
 options=('!libtool' '!makeflags' '!strip')
