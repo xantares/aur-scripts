@@ -33,6 +33,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/3.3.0/0045-mingw-use-posix-getpath.patch || echo "~"
   patch -Np1 -i "${srcdir}"/3.3.0/0050-mingw-sysconfig-like-posix.patch
   patch -Np1 -i "${srcdir}"/3.3.0/0055-mingw-_winapi_as_builtin_for_Popen_in_cygwinccompiler.patch
+   sed -i "s|__USE_MINGW_ANSI_STDIO|__MINGW32__|g" "${srcdir}"/3.3.0/0060-mingw-x86_64-size_t-format-specifier-pid_t.patch
   patch -Np1 -i "${srcdir}"/3.3.0/0060-mingw-x86_64-size_t-format-specifier-pid_t.patch
   patch -Np1 -i "${srcdir}"/3.3.0/0065-cross-dont-add-multiarch-paths-if-cross-compiling.patch
   patch -Np1 -i "${srcdir}"/3.3.0/0070-mingw-use-backslashes-in-compileall-py.patch
@@ -101,6 +102,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
+    install -m 644 libpython${_pybasever}.dll.a "$pkgdir"/usr/${_arch}/lib
+    rm -rf "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
