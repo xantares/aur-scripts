@@ -56,9 +56,6 @@ prepare() {
 #   patch -Np1 -i 2.7.5/9999-re-configure-d.patch
   autoreconf -vfi
   
-  # http://bugs.python.org/issue18709
-#   patch -Np1 -i ../python-2.7.5-CVE-2013-4238.patch
-
   # Temporary workaround for FS#22322
   # See http://bugs.python.org/issue10835 for upstream report
   sed -i "/progname =/s/python/python${_pybasever}/" Python/pythonrun.c
@@ -109,7 +106,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    install -m0644 libpython${_pybasever}.a "$pkgdir"/usr/${_arch}/lib/ 
     rm -rf "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
