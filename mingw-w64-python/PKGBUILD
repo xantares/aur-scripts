@@ -93,27 +93,12 @@ package() {
     make install DESTDIR="$pkgdir"
     install -m 644 libpython${_pybasever}.dll.a "$pkgdir"/usr/${_arch}/lib
     rm -rf "$pkgdir"/usr/${_arch}/share
+    rm "$pkgdir"/usr/${_arch}/bin/2to3*
+    rm "$pkgdir"/usr/${_arch}/bin/idle*
+    rm "$pkgdir"/usr/${_arch}/bin/pydoc*
+    rm "$pkgdir"/usr/${_arch}/bin/pyvenv*
+    rm "$pkgdir"/usr/${_arch}/bin/python-config.sh
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
-# 
-# 
-#   cd "${srcdir}/Python-${pkgver}"
-#   make DESTDIR="${pkgdir}" install maninstall
-# 
-#   # Why are these not done by default...
-#   ln -sf python3               "${pkgdir}"/usr/bin/python
-#   ln -sf python3-config        "${pkgdir}"/usr/bin/python-config
-#   ln -sf idle3                 "${pkgdir}"/usr/bin/idle
-#   ln -sf pydoc3                "${pkgdir}"/usr/bin/pydoc
-#   ln -sf python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python3.1
-#   ln -sf python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python.1
-# 
-#   # Fix FS#22552
-#   ln -sf ../../libpython${_pybasever}m.so \
-#     "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m/libpython${_pybasever}m.so"
-# 
-#   # Clean-up reference to build directory
-#   sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m/Makefile"
-
 }
