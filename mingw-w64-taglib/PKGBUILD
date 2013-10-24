@@ -1,5 +1,5 @@
 _pkgname=taglib
-pkgname=mingw-w64-$pkgname
+pkgname=mingw-w64-$_pkgname
 pkgver=1.9.1
 pkgrel=1
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (mingw-w64)"
