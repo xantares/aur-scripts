@@ -33,6 +33,7 @@ mingw-w64-qscintilla
 mingw-w64-qsint
 mingw-w64-tcl
 mingw-w64-taglib
+mingw-w64-taglib-static
 mingw-w64-testsuite
 mingw-w64-xz
 mingw-w64-zeromq
