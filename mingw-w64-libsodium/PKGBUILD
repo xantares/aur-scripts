@@ -10,7 +10,7 @@ url="https://github.com/jedisct1/libsodium"
 license=("Public Domain")
 makedepends=('mingw-w64-gcc' 'autoconf')
 depends=('mingw-w64-crt')
-options=('!libtool' '!strip' '!buildflags')
+options=('staticlibs' '!strip' '!buildflags')
 source=("http://download.dnscrypt.org/${_pkgname}/releases/${_pkgname}-${pkgver}.tar.gz"
         'libsodium-def.patch')
 md5sums=('7075953917e2b4d76423a51aab309b2a'
