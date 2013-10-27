@@ -1,8 +1,7 @@
 # $Id: PKGBUILD 191565 2013-07-25 16:28:52Z heftig $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
-_pkgname=harfbuzz
-pkgname=mingw-w64-$_pkgname
+pkgname=mingw-w64-harfbuzz
 pkgver=0.9.19
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
@@ -11,13 +10,13 @@ url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
 depends=('mingw-w64-crt')
 makedepends=(mingw-w64-glib2 mingw-w64-freetype mingw-w64-cairo mingw-w64-icu)
-options=(staticlibs)
+options=('staticlibs' '!buildflags' '!strip')
 source=(http://www.freedesktop.org/software/harfbuzz/release/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('d2da0f060d47f6ad9de8c8781bb21fa4b9eae8ea1cd1e956b814095baa002f35')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd $_pkgname-$pkgver
+  cd harfbuzz-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ../configure --prefix=/usr/${_arch} --host=${_arch} \
@@ -29,7 +28,7 @@ build() {
 
 package(){
   for _arch in ${_architectures}; do
-    cd "$srcdir/${_pkgname}-${pkgver}/build-$_arch"
+    cd "$srcdir/harfbuzz-${pkgver}/build-$_arch"
     make DESTDIR="$pkgdir" install -j1
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
