@@ -7,6 +7,7 @@ mingw-w64-dlfcn
 mingw-w64-eigen3
 mingw-w64-freealut
 mingw-w64-gdbm
+mingw-w64-gettext
 mingw-w64-gsl
 mingw-w64-icu
 mingw-w64-intel-tbb
