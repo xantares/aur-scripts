@@ -8,11 +8,8 @@ mingw-w64-eigen3
 mingw-w64-fftw
 mingw-w64-freealut
 mingw-w64-gdbm
-<<<<<<< HEAD
 mingw-w64-glib2
-=======
 mingw-w64-gettext
->>>>>>> e6b421c544132892973ff00d6b92a7ad482cf5f9
 mingw-w64-gsl
 mingw-w64-icu
 mingw-w64-intel-tbb
