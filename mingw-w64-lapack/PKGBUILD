@@ -19,11 +19,10 @@ build()
 {
   cd "$srcdir/lapack-${pkgver}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS CPPFLAGS
+    unset LDFLAGS
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       ..
     make
     popd
