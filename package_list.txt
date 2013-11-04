@@ -15,6 +15,7 @@ mingw-w64-icu
 mingw-w64-intel-tbb
 mingw-w64-kissfft
 mingw-w64-lapack
+mingw-w64-libffi
 mingw-w64-libftdi1
 mingw-w64-libgcrypt
 mingw-w64-libglade
