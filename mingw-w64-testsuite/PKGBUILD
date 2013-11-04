@@ -36,7 +36,7 @@ check () {
   for _arch in ${_architectures}; do
     pushd "build-${_arch}"
     cp /usr/${_arch}/*/*.dll .
-    ctest
+    ctest || {cat Testing/Temporary/LastTest.log; return 1}
     popd
   done
 
