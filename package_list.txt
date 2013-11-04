@@ -42,7 +42,6 @@ mingw-w64-qrencode
 mingw-w64-qscintilla
 mingw-w64-qsint
 mingw-w66-readline
-mingw-w64-tcl
 mingw-w64-taglib
 mingw-w64-taglib-static
 mingw-w64-termcap
