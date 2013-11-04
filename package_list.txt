@@ -28,6 +28,7 @@ mingw-w64-libusbx
 mingw-w64-libxml2
 mingw-w64-libxslt
 mingw-w64-libzip
+mingw-w64-mixmod
 mingw-w64-mpfr
 mingw-w64-muparser
 mingw-w64-nlopt
