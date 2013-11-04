@@ -23,6 +23,7 @@ mingw-w64-libsodium
 mingw-w64-libsvm
 mingw-w64-libuecc
 mingw-w64-libusbx
+mingw-w64-libxml2
 mingw-w64-libxslt
 mingw-w64-libzip
 mingw-w64-mpfr
