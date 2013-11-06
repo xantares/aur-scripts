@@ -11,7 +11,6 @@ mingw-w64-gdbm
 mingw-w64-glib2
 mingw-w64-gettext
 mingw-w64-gsl
-mingw-w64-icu
 mingw-w64-intel-tbb
 mingw-w64-kissfft
 mingw-w64-lapack
