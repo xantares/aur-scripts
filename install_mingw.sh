@@ -2,10 +2,20 @@
 
 set -e
 
+#remove: yaourt -Rscnd mingw-w64
+
 yaourt -Sya mingw-w64-binutils --noconfirm
 yaourt -S mingw-w64-crt --noconfirm
+
 yaourt -S mingw-w64-winpthreads
 yaourt -S mingw-w64-gcc
+
+
+
+
+
+
+
 
 
 yaourt -S mingw-w64-lapack --noconfirm
