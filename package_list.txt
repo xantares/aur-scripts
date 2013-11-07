@@ -35,6 +35,7 @@ mingw-w64-muparser
 mingw-w64-nlopt
 mingw-w64-openjpeg
 mingw-w64-openssl
+mingw-w64-pdcurses
 mingw-w64-python
 mingw-w64-python2
 mingw-w64-qrencode
