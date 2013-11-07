@@ -20,7 +20,6 @@ mingw-w64-libgcrypt
 mingw-w64-libglade
 mingw-w64-libgnurx
 mingw-w64-libgpg-error
-mingw-w64-libiconv
 mingw-w64-libltdl
 mingw-w64-libsodium
 mingw-w64-libsvm
