@@ -10,8 +10,8 @@ license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("i486-mingw32-cmake"
         "toolchain-i486-mingw32.cmake")
-md5sums=('SKIP'
-         'SKIP')
+md5sums=('f90df8d0469132d1893aa7d3021d37fc'
+         '742d66b6b6b62ad9c97e76c78bc410f4')
 
 package() {
   cd "${pkgdir}"
@@ -19,6 +19,6 @@ package() {
   install -d "${pkgdir}"/usr/bin
   install -m 755 "${srcdir}"/i486-mingw32-cmake "${pkgdir}"/usr/bin/
 
-  install -d ${pkgdir}/usr/share/mingw
-  install -m 644 ${srcdir}/toolchain-i486-mingw32.cmake ${pkgdir}/usr/share/mingw/
+  install -d "${pkgdir}"/usr/share/mingw
+  install -m 644 "${srcdir}"/toolchain-i486-mingw32.cmake "${pkgdir}"/usr/share/mingw/
 }
