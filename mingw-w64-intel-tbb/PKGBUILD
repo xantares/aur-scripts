@@ -1,8 +1,8 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 
 pkgname=mingw-w64-intel-tbb
-pkgver=4.2_20130725
-pkgrel=4
+pkgver=4.2_20131003
+pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt' 'mingw-w64-dlfcn')
 makedepends=('mingw-w64-gcc')
@@ -11,7 +11,7 @@ arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('GPL')
 source=("http://threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb${pkgver/\./}oss_src.tgz")
-sha1sums=('f354bd9b67295f65c43531b751e34f483ed8a024')
+sha1sums=('3db96457f4d8025b86e70f51212cbbcb7a1efb93')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
