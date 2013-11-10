@@ -35,8 +35,7 @@ build()
       --disable-stripping \
       --enable-shared \
       --disable-msvc \
-      --cc=${_arch}-gcc \
-      --cross-prefix=/usr/${_arch}/bin/
+      --cross-prefix=${_arch}-
     cp ../Makefile ../dlfcn.c ../dlfcn.h .
     make
     popd
