@@ -507,6 +507,18 @@ diff -ur tbb42_20131003oss.orig/src/tbb/condition_variable.cpp tbb42_20131003oss
  
  namespace interface5 {
  namespace internal {
+diff -ur tbb42_20131003oss.orig/src/tbb/governor.cpp tbb42_20131003oss/src/tbb/governor.cpp
+--- tbb42_20131003oss.orig/src/tbb/governor.cpp	2013-11-10 17:41:41.215295357 +0100
++++ tbb42_20131003oss/src/tbb/governor.cpp	2013-11-10 19:27:38.447521940 +0100
+@@ -236,7 +236,7 @@
+     generic_scheduler* s = static_cast<generic_scheduler*>(data);
+ #if TBB_USE_ASSERT
+     void* current = theTLS.get();
+-#if _WIN32||_WIN64
++#if USE_WIN32_API
+     uintptr_t thread_id = GetCurrentThreadId();
+ #else
+     uintptr_t thread_id = uintptr_t(pthread_self());
 diff -ur tbb42_20131003oss.orig/src/tbb/mutex.cpp tbb42_20131003oss/src/tbb/mutex.cpp
 --- tbb42_20131003oss.orig/src/tbb/mutex.cpp	2013-11-10 17:41:41.215295357 +0100
 +++ tbb42_20131003oss/src/tbb/mutex.cpp	2013-11-10 18:16:28.123989602 +0100
@@ -681,6 +693,36 @@ diff -ur tbb42_20131003oss.orig/src/tbb/recursive_mutex.cpp tbb42_20131003oss/sr
  }
  
  } // namespace tbb
+diff -ur tbb42_20131003oss.orig/src/tbb/tbb_misc.cpp tbb42_20131003oss/src/tbb/tbb_misc.cpp
+--- tbb42_20131003oss.orig/src/tbb/tbb_misc.cpp	2013-11-10 17:41:41.211962042 +0100
++++ tbb42_20131003oss/src/tbb/tbb_misc.cpp	2013-11-10 19:33:41.158890297 +0100
+@@ -38,7 +38,7 @@
+ #include <cstdlib>
+ #include <stdexcept>
+ 
+-#if _WIN32||_WIN64
++#if USE_WIN32_API
+ #include "tbb/machine/windows_api.h"
+ #endif
+ 
+@@ -101,7 +101,7 @@
+ #endif /* !TBB_USE_EXCEPTIONS */
+ }
+ 
+-#if _WIN32||_WIN64 
++#if USE_WIN32_API
+ void handle_win_error( int error_code ) {
+     char buf[512];
+ #if !__TBB_WIN8UI_SUPPORT
+@@ -117,7 +117,7 @@
+     PRINT_ERROR_AND_ABORT( "runtime_error", buf);
+ #endif /* !TBB_USE_EXCEPTIONS */
+ }
+-#endif // _WIN32||_WIN64
++#endif // USE_WIN32_API
+ 
+ void throw_bad_last_alloc_exception_v4() {
+     throw_exception_v4(eid_bad_last_alloc);
 diff -ur tbb42_20131003oss.orig/src/tbb/tbb_thread.cpp tbb42_20131003oss/src/tbb/tbb_thread.cpp
 --- tbb42_20131003oss.orig/src/tbb/tbb_thread.cpp	2013-11-10 17:41:41.215295357 +0100
 +++ tbb42_20131003oss/src/tbb/tbb_thread.cpp	2013-11-10 18:08:41.000000000 +0100
