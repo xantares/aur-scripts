@@ -112,8 +112,6 @@ package() {
     install out/Debug/src/libGLESv2.so "${pkgdir}"/usr/${_arch}/bin/libGLESv2.dll
     install out/Debug/src/libEGL.so "${pkgdir}"/usr/${_arch}/bin/libEGL.dll
 
-    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
-
     install libGLESv2.a "${pkgdir}"/usr/${_arch}/lib/
     install libEGL.a "${pkgdir}"/usr/${_arch}/lib/
 
