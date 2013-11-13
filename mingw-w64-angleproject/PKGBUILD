@@ -29,23 +29,23 @@ prepare () {
   cd "${srcdir}/angleproject"
   
   # File names are case-sensitive on Linux
-  patch -p0 -i ${srcdir}/angleproject-fix-case-sensitive-include.patch
+  patch -p0 -i "${srcdir}"/angleproject-fix-case-sensitive-include.patch
   
   # Make sure an import library is created and the correct .def file is used during the build
-  patch -p0 -i ${srcdir}/angleproject-include-import-library-and-use-def-file.patch
+  patch -p0 -i "${srcdir}"/angleproject-include-import-library-and-use-def-file.patch
   
   # .def pieces taken from http://qt.gitorious.org/qt/qtbase/commit/b2c44985e740d0a0ea86b7b9f4cc849258ac2340
-  patch -p0 -i ${srcdir}/angleproject-fix-mingw-compatibility.patch
+  patch -p0 -i "${srcdir}"/angleproject-fix-mingw-compatibility.patch
   
   # http://qt.gitorious.org/qt/qtbase/commit/dc2bfb6f8977732e1cd5ed9faac5a32870e2967a
   # Fix typedefs for Win64
   # The long int type is incorrect for Windows 64-bit as LLP64 is used there.
-  patch -p4 -i ${srcdir}/angleproject-fix-typedefs-for-win64.patch
+  patch -p4 -i "${srcdir}"/angleproject-fix-typedefs-for-win64.patch
   
   # WebKit depends on symbols which are used in the static library called translator_hlsl
   # This static library is linked into the libGLESv2 shared library
   # To allow building WebKit export the required symbols in the libGLESv2 shared library
-  patch -p0 -i ${srcdir}/angleproject-export-shader-symbols.patch
+  patch -p0 -i "${srcdir}"/angleproject-export-shader-symbols.patch
 }
 
 build() {
