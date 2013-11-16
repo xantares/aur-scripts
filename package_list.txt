@@ -18,10 +18,12 @@ mingw-w64-lapack
 mingw-w64-libffi
 mingw-w64-libftdi1
 mingw-w64-libgcrypt
+mingw-w64-libgee
 mingw-w64-libglade
 mingw-w64-libgnurx
 mingw-w64-libgpg-error
 mingw-w64-libltdl
+mingw-w64-libmad
 mingw-w64-libsodium
 mingw-w64-libsvm
 mingw-w64-libuecc
@@ -29,6 +31,7 @@ mingw-w64-libusbx
 mingw-w64-libxml2
 mingw-w64-libxslt
 mingw-w64-libzip
+mingw-w64-lzo2
 mingw-w64-mixmod
 mingw-w64-mpfr
 mingw-w64-muparser
