@@ -38,7 +38,7 @@ rm -rf mingw-w64-gcc
 yaourt -G mingw-w64-gcc 
 pushd mingw-w64-gcc
 makepkg --asroot
-install_conflict mingw-w64-gcc-4.8.2-2-x86_64.pkg.tar.xz
+install_conflict mingw-w64-gcc-4.8.2-3-x86_64.pkg.tar.xz
 popd
 
 
@@ -48,6 +48,6 @@ yaourt -S mingw-w64-cmake --noconfirm
 yaourt -S mingw-w64-libxml2 --noconfirm
 yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-muparser --noconfirm
-
-
+yaourt -S mingw-w64-libsvm --noconfirm
+yaourt -S mingw-w64-fftw --noconfirm
 
