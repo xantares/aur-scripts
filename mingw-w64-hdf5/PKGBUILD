@@ -1,0 +1,33 @@
+pkgname=mingw-w64-hdf5
+pkgver=1.8.12
+pkgrel=1
+arch=('any')
+pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
+url="http://www.hdfgroup.org/HDF5/"
+license=('custom')
+depends=('mingw-w64-crt' 'mingw-w64-zlib')
+makedepends=('mingw-w64-gcc')
+options=('!strip' '!buildflags' 'staticlibs')
+source=(ftp://ftp.hdfgroup.org/HDF5/current/src/hdf5-${pkgver/_/-}.tar.bz2)
+sha1sums=('9b266ebde9287130fc07ce9f07f20cd0f753591b')
+
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+build() {
+  cd "$srcdir/hdf5-${pkgver/_/-}"
+  for _arch in $_architectures; do
+    unset LDFLAGS
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-cmake ..
+    make
+    popd
+  done
+}
+
+package() {
+  for _arch in $_architectures; do
+    cd "$srcdir/hdf5-${pkgver/_/-}/build-${_arch}"
+    make DESTDIR="${pkgdir}" install
+  done
+}
+
