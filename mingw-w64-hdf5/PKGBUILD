@@ -18,7 +18,22 @@ build() {
   for _arch in $_architectures; do
     unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ..
+    ${_arch}-cmake \
+      -DHAVE_IOEO_EXITCODE=1 \
+      -DHDF5_PRINTF_LL_TEST=1 \
+      -DH5_LDOUBLE_TO_INTEGER_WORKS=1 \
+      -DH5_ULONG_TO_FLOAT_ACCURATE=1 \
+      -DH5_LDOUBLE_TO_UINT_ACCURATE=1 \
+      -DH5_FP_TO_ULLONG_ACCURATE=1 \
+      -DH5_ULLONG_TO_LDOUBLE_PRECISION=1 \
+      -DH5_FP_TO_INTEGER_OVERFLOW_WORKS=1 \
+      -DH5_LDOUBLE_TO_LLONG_ACCURATE=1 \
+      -DH5_LLONG_TO_LDOUBLE_CORRECT=1 \
+      -DH5_NO_ALIGNMENT_RESTRICTIONS=1 \
+      -DHDF5_PRINTF_LL_TEST_RUN=1 \
+      -DHDF5_PRINTF_LL_TEST_COMPILE=1 \
+      -DHDF5_PRINTF_LL_TEST_RUN__TRYRUN_OUTPUT=1 \
+      ..
     make
     popd
   done
