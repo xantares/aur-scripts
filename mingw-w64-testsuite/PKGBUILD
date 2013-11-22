@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-testsuite
 pkgver=0
-pkgrel=5
+pkgrel=6
 license=('GPL')
 arch=(any)
 pkgdesc='Archlinux mingw64 testsuite (mingw-w64)'
