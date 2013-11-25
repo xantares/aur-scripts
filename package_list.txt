@@ -1,6 +1,4 @@
 binfmt-wine
-brainparty
-cmake-lint
 kissfft
 mingw-w64-angleproject
 mingw-w64-confuse
@@ -52,7 +50,6 @@ mingw-w64-xz
 mingw-w64-zeromq
 mixmod
 nlopt
-python-crossroad
 qsint
 ttimg-utils
 openturns-doc
