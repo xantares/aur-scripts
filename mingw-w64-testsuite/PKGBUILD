@@ -21,7 +21,8 @@ build() {
     unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-    ..
+      -DFORCE_WINE=ON \
+      ..
     make
     popd
   done
