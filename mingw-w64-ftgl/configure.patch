@@ -1,38 +1,45 @@
---- configure.bup	2012-02-03 10:42:19.425380720 +0100
-+++ configure	2012-02-03 10:43:58.231512108 +0100
-@@ -22455,7 +22455,7 @@
+diff -ur ftgl-2.1.3~rc5.orig/m4/gl.m4 ftgl-2.1.3~rc5/m4/gl.m4
+--- ftgl-2.1.3~rc5.orig/m4/gl.m4	2013-11-29 22:57:02.505062845 +0100
++++ ftgl-2.1.3~rc5/m4/gl.m4	2013-11-29 23:10:18.086855728 +0100
+@@ -36,7 +36,7 @@
+ CPPFLAGS="$GL_CFLAGS"
+ AC_CHECK_HEADER([GL/gl.h], [AC_DEFINE([HAVE_GL_GL_H], 1, [Define to 1 if you have the <GL/gl.h header])], [
+ 	AC_CHECK_HEADER([OpenGL/gl.h], [AC_DEFINE([HAVE_OPENGL_GL_H], 1, [Define to 1 if you have the <OpenGL/gl.h header])], [
+-		AC_MSG_ERROR([GL/gl.h or OpenGL/gl.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
++		AC_MSG_WARN([GL/gl.h or OpenGL/gl.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
+ 	])
+ ])
  
- 		{ { echo "$as_me:$LINENO: error: GL/gl.h or OpenGL/gl.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&5
- echo "$as_me: error: GL/gl.h or OpenGL/gl.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&2;}
--   { (exit 1); exit 1; }; }
-+   { (echo "ignoring missing GL library."); true; }; }
- 
+@@ -74,12 +74,12 @@
+     GL_LIBS=$LIBS
+ else
+     AC_MSG_RESULT([no])
+-    AC_MSG_ERROR([GL library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
++    AC_MSG_WARN([GL library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
  fi
  
-@@ -22645,7 +22645,7 @@
- echo "${ECHO_T}no" >&6; }
-     { { echo "$as_me:$LINENO: error: GL library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&5
- echo "$as_me: error: GL library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&2;}
--   { (exit 1); exit 1; }; }
-+   { (echo "ignoring missing GL library."); true; }; }
- fi
+ AC_CHECK_HEADER([GL/glu.h], [AC_DEFINE([HAVE_GL_GLU_H], 1, [Define to 1 if you have the <GL/glu.h header])], [
+ 	AC_CHECK_HEADER([OpenGL/glu.h], [AC_DEFINE([HAVE_OPENGL_GLU_H], 1, [Define to 1 if you have the <OpenGL/glu.h header])], [
+-		AC_MSG_ERROR([GL/glu.h or OpenGL/glu.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
++		AC_MSG_WARN([GL/glu.h or OpenGL/glu.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
+ 	])
+ ])
+ AC_MSG_CHECKING([for GLU version >= 1.2])
+@@ -97,7 +97,7 @@
+                ],
+                [AC_MSG_RESULT([yes])],
+                [AC_MSG_RESULT([no])
+-                AC_MSG_ERROR([GLU >= 1.2 is needed to compile this library])
++                AC_MSG_WARN([GLU >= 1.2 is needed to compile this library])
+                ])
  
- if test "${ac_cv_header_GL_glu_h+set}" = set; then
-@@ -22926,7 +22926,7 @@
- 
- 		{ { echo "$as_me:$LINENO: error: GL/glu.h or OpenGL/glu.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&5
- echo "$as_me: error: GL/glu.h or OpenGL/glu.h is needed, please specify its location with --with-gl-inc.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&2;}
--   { (exit 1); exit 1; }; }
-+   { (echo "ignoring missing GLU library."); true; }; }
- 
- fi
- 
-@@ -23115,7 +23115,7 @@
- echo "${ECHO_T}no" >&6; }
-     { { echo "$as_me:$LINENO: error: GLU library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&5
- echo "$as_me: error: GLU library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind." >&2;}
--   { (exit 1); exit 1; }; }
-+   { (echo "ignoring missing GLU library."); true; }; }
+ if test "x$FRAMEWORK_OPENGL" = "x" ; then
+@@ -116,7 +116,7 @@
+     GL_LIBS="$LIBS"
+ else
+     AC_MSG_RESULT([no])
+-    AC_MSG_ERROR([GLU library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
++    AC_MSG_WARN([GLU library could not be found, please specify its location with --with-gl-lib.  If this still fails, please contact henryj@paradise.net.nz, include the string FTGL somewhere in the subject line and provide a copy of the config.log file that was left behind.])
  fi
  
  fi
