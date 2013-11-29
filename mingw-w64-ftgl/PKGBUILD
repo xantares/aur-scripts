@@ -10,10 +10,8 @@ depends=(mingw-w64-crt mingw-w64-freetype)
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 options=(staticlibs !strip !buildflags)
 source=("http://downloads.sourceforge.net/ftgl/ftgl-$_pkgver.tar.bz2"
-        "configure.patch"
         "m4.gl.m4.patch")
 md5sums=('c7879018cde844059495b3029b0b6503'
-         'c0c5e71cb71533fd36b84cd4daca54db'
          '8590beb2dea7e28e7b7214ed562b2472')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -23,7 +21,6 @@ prepare () {
   cd "${srcdir}/ftgl-${_pkgver/-/~}"
   sed -i "s|SUBDIRS = src test demo docs|SUBDIRS = src|g" Makefile.am
   patch -p0 -i "${srcdir}"/m4.gl.m4.patch
-  patch -p1 -i "${srcdir}"/configure.patch
   autoreconf -vfi
 }
 
@@ -39,7 +36,7 @@ build() {
       --build=$CHOST \
       --host=${_arch} \
       --without-x
-    make ECHO=echo
+    make
     popd
   done
 }
