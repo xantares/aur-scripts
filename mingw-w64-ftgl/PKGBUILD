@@ -1,6 +1,6 @@
 pkgname=mingw-w64-ftgl
 _pkgver=2.1.3-rc5
-pkgver=${_pkgver/-/}
+pkgver=2.1.3rc5
 pkgrel=4
 pkgdesc="OpenGL library to use arbitrary fonts (mingw-w64)"
 arch=(any)
