@@ -27,7 +27,7 @@ build()
       ..
     make
     popd
-    mkdir -p build-${_arch} && pushd build-${_arch}-static
+    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       ..
