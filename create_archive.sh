@@ -19,6 +19,10 @@ do
   done
 done
 
+# only static
+rm mingw-w64-$arch/usr/*-w64-mingw32/bin/*.dll
+rm mingw-w64-$arch/usr/*-w64-mingw32/lib/*.dll.a
+
 echo "-- archive..."
 tar czf mingw-w64-$arch.tar.gz mingw-w64-$arch/*
 
