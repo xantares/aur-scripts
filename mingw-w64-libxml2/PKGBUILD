@@ -11,15 +11,18 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.xmlsoft.org/"
 source=("http://xmlsoft.org/sources/libxml2-${pkgver}.tar.gz"
-        "mingw32-libxml2-static-build-compile-fix.patch")
+        "mingw32-libxml2-static-build-compile-fix.patch"
+        "libxml2-no-test.patch")
 md5sums=('9c0cfef285d5c4a5c80d00904ddab380'
-         '0df377025082cd93cccbca547f048011')
+         '0df377025082cd93cccbca547f048011'
+         'ddd73e88dda6ae318267507409445b7d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/libxml2-${pkgver}"
   patch -Np0 -i "${srcdir}"/mingw32-libxml2-static-build-compile-fix.patch
+  patch -Np1 -i "${srcdir}"/libxml2-no-test.patch
 }
 
 build()
