@@ -23,6 +23,9 @@ prepare () {
   cd "${srcdir}/libxml2-${pkgver}"
   patch -Np0 -i "${srcdir}"/mingw32-libxml2-static-build-compile-fix.patch
   patch -Np1 -i "${srcdir}"/libxml2-no-test.patch
+  sed -i "s| doc example | |g" Makefile.am
+  sed -i "s|LIBXML_STATIC|_WIN32|g" include/libxml/xmlexports.h
+  autoreconf -vfi
 }
 
 build()
