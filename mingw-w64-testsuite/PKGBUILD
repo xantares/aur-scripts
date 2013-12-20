@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-testsuite
 pkgver=0
-pkgrel=7
+pkgrel=8
 license=('GPL')
 arch=(any)
 pkgdesc='Archlinux mingw64 testsuite (mingw-w64)'
@@ -21,7 +21,6 @@ build() {
     unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DFORCE_WINE=ON \
       ..
     make
     popd
