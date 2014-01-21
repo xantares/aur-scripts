@@ -1,18 +1,19 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 
 pkgname=('openturns')
-pkgver=1.3rc1
+pkgver=1.3rc2
 pkgrel=1
 pkgdesc="Uncertainty treatment library in C++/Python"
 license=('LGPL3')
 arch=('i686' 'x86_64')
 url="http://www.openturns.org/"
-depends=('lapack' 'libxml2' 'muparser' 'intel-tbb' 'python')
-optdepends=('r: plotting and statistical tests'
+depends=('lapack' 'libxml2' 'muparser' 'intel-tbb')
+optdepends=('r: plotting, linear model, truncated normal distribution estimation and statistical tests'
+            'python: python bindings'
             'python-matplotlib: nicer plotting')
 makedepends=('r' 'python' 'cmake' 'gcc' 'gcc-fortran' 'bison' 'flex' 'swig')
 source=("http://downloads.sourceforge.net/sourceforge/openturns/openturns/openturns-$pkgver.tar.bz2")
-md5sums=('e1e28248b7027a6e9ff99fc8d8de4363')
+md5sums=('1620610bfe64bbe759eab3b1ec8d66ca')
 
 prepare() {
   cd $pkgname-$pkgver
