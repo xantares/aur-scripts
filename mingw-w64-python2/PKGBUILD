@@ -2,20 +2,26 @@
 # Contributor: Ray Donnelly <mingw.android@gmail.com>
 
 pkgname=mingw-w64-python2
-pkgver=2.7.5
-pkgrel=2
+pkgver=2.7.6
+pkgrel=1
 _pybasever=2.7
 pkgdesc="A high-level scripting language (mingw-w64)"
 arch=('any')
 license=('PSF')
 url="http://www.python.org/"
-depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-bzip2' 'mingw-w64-gdbm' 'mingw-w64-openssl' 'mingw-w64-libffi' 'mingw-w64-zlib')
+depends=('mingw-w64-crt'
+         'mingw-w64-expat'
+	 'mingw-w64-bzip2'
+	 'mingw-w64-gdbm'
+	 'mingw-w64-openssl'
+	 'mingw-w64-libffi'
+	 'mingw-w64-zlib')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'binfmt-wine' "python2>=${pkgver}")
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver%rc?}/Python-${pkgver}.tar.xz"
         'crucifixion-freedom-python.tar.gz')
-sha1sums=('b7389791f789625c2ba9d897aa324008ff482daf'
-          '596a7c2c0993677797e82c96703f1f44a6d595fa')
+sha1sums=('8321636af2acbeaa68fc635d7dda7369ed446a80'
+          'b6e46e827430c1a4dfb626929465bf561ed522ca')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -49,7 +55,6 @@ prepare() {
   rm -r Modules/expat
   rm -r Modules/zlib
   rm -r Modules/_ctypes/{darwin,libffi}*
-  
 }
 
 build() {
@@ -78,10 +83,11 @@ package() {
     make install DESTDIR="$pkgdir"
     install -m 644 libpython${_pybasever}.dll.a "$pkgdir"/usr/${_arch}/lib
     rm -rf "$pkgdir"/usr/${_arch}/share
+    rm "$pkgdir"/usr/${_arch}/bin/2to3
+    mv "$pkgdir"/usr/${_arch}/bin/python-config.sh "$pkgdir"/usr/${_arch}/bin/python2-config.sh
+    rm "$pkgdir"/usr/${_arch}/bin/python-config*
     rm "$pkgdir"/usr/${_arch}/bin/idle
     rm "$pkgdir"/usr/${_arch}/bin/pydoc
-    rm "$pkgdir"/usr/${_arch}/bin/2to3
-    rm "$pkgdir"/usr/${_arch}/bin/python-config*
     rm "$pkgdir"/usr/${_arch}/bin/python.exe
     mv "${pkgdir}"/usr/${_arch}/bin/smtpd.py "${pkgdir}"/usr/${_arch}/lib/python${_pybasever}/
     rm "${pkgdir}"/usr/${_arch}/lib/pkgconfig/python.pc

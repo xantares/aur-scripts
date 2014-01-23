@@ -7,15 +7,21 @@ pkgrel=1
 _pybasever=3.3
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
 arch=('any')
-license=('custom')
+license=('PSF')
 url="http://www.python.org/"
-depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-bzip2' 'mingw-w64-gdbm' 'mingw-w64-openssl' 'mingw-w64-libffi' 'mingw-w64-zlib')
+depends=('mingw-w64-crt'
+         'mingw-w64-expat'
+	 'mingw-w64-bzip2'
+	 'mingw-w64-gdbm'
+	 'mingw-w64-openssl'
+	 'mingw-w64-libffi'
+	 'mingw-w64-zlib')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'binfmt-wine' "python>=${pkgver}")
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
         'crucifixion-freedom-python.tar.gz')
 sha1sums=('af4e75a34bd538c79b9871227c2e7f56569ac107'
-          '596a7c2c0993677797e82c96703f1f44a6d595fa')
+          'b6e46e827430c1a4dfb626929465bf561ed522ca')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -75,7 +81,5 @@ package() {
     ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-    cd "$pkgdir"/usr/${_arch}/bin
-    ln -sf python3.exe python.exe 
   done
 }
