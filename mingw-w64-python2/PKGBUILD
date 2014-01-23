@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-python2
 pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 _pybasever=2.7
 pkgdesc="A high-level scripting language (mingw-w64)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('mingw-w64-crt'
 	 'mingw-w64-openssl'
 	 'mingw-w64-libffi'
 	 'mingw-w64-zlib')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'binfmt-wine' "python2>=${pkgver}")
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' "python2>=${pkgver}" 'wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'crucifixion-freedom-python.tar.gz')
@@ -34,6 +34,9 @@ prepare() {
   for PATCH in $PATCHES; do
     patch -Np1 -i $PATCH
   done
+
+  # run PGEN through wine
+  sed -i "s|\\\$(PGEN) \\\$(GRAMMAR_INPUT)|wine \\\$(PGEN) \\\$(GRAMMAR_INPUT)|g" Makefile.pre.in
 
   autoreconf -vfi
   
