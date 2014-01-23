@@ -83,8 +83,8 @@ package() {
     make install DESTDIR="$pkgdir"
     install -m 644 libpython${_pybasever}.dll.a "$pkgdir"/usr/${_arch}/lib
     rm -rf "$pkgdir"/usr/${_arch}/share
+    rm "$pkgdir"/usr/${_arch}/bin/*.sh
     rm "$pkgdir"/usr/${_arch}/bin/2to3
-    mv "$pkgdir"/usr/${_arch}/bin/python-config.sh "$pkgdir"/usr/${_arch}/bin/python2-config.sh
     rm "$pkgdir"/usr/${_arch}/bin/python-config*
     rm "$pkgdir"/usr/${_arch}/bin/idle
     rm "$pkgdir"/usr/${_arch}/bin/pydoc
