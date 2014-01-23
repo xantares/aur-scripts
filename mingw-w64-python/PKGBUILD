@@ -18,7 +18,7 @@ depends=('mingw-w64-crt'
 	 'mingw-w64-zlib')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'binfmt-wine' "python>=${pkgver}")
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
+source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
         'crucifixion-freedom-python.tar.gz')
 sha1sums=('af4e75a34bd538c79b9871227c2e7f56569ac107'
           'b6e46e827430c1a4dfb626929465bf561ed522ca')
