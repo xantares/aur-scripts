@@ -17,7 +17,7 @@ build() {
   git clone https://github.com/xantares/pkgtest.git pkgtest-$pkgver
   cd pkgtest-$pkgver
 
-  # run tests through wine
+  # run tests through wine
   sed -i "s|add_test ( t_\${PKGNAME}|add_test ( t_\${PKGNAME} wine|g" CMakeLists.txt
 
   for _arch in ${_architectures}; do
