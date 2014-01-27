@@ -1,7 +1,7 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 
 pkgname=mingw-w64-libusbx
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=3
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
@@ -9,14 +9,16 @@ pkgdesc="Library that provides generic access to USB device (mingw-w64)"
 arch=(any)
 url="http://libusbx.org"
 license=('LGPL')
-source=(http://downloads.sourceforge.net/libusbx/releases/${pkgver}/libusbx-${pkgver}.tar.bz2)
-options=('staticlibs' '!makeflags' '!strip' '!buildflags')
-md5sums=('99467ca2cb81c19c4a172de9f30e7576')
+source=(http://downloads.sourceforge.net/libusbx/releases/${pkgver}/libusbx-${pkgver}-rc1.tar.bz2)
+options=('staticlibs' '!strip' '!buildflags')
+md5sums=('SKIP')
          
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "$srcdir/libusbx-${pkgver}"
+  cd "$srcdir/libusbx-${pkgver}-rc1"
+  #sed -i "s|libusb-1.0.dll: libusb-1.0.def|libusb-1.0.dll: libusb-1.0.def libusb-1.0.la|g" libusb/Makefile.am
+  #autoreconf -vfi
   for _arch in ${_architectures}; do
     unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}

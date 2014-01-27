@@ -23,7 +23,7 @@ build() {
   for _arch in ${_architectures}; do
     unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ..
+    ${_arch}-cmake -DUSE_QT4=OFF ..
     make
     popd
   done
