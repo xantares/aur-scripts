@@ -1,6 +1,6 @@
 pkgname=mingw-w64-testsuite
 pkgver=0
-pkgrel=12
+pkgrel=13
 license=('GPL')
 arch=(any)
 pkgdesc='package testsuite (mingw-w64)'
@@ -28,15 +28,13 @@ build() {
 }
 
 check () {
-  mkdir -p /tmp/.X11-unix || echo "no X dir"
-  chown root:root /tmp/.X11-unix || echo "no X dir"
   export DISPLAY=:99
   Xvfb -nolisten tcp -screen 0 1024x768x24 $DISPLAY &
   XVFB_PID=`echo $!`
   cd pkgtest-$pkgver
   for _arch in ${_architectures}; do
     pushd "build-${_arch}"
-    cp /usr/${_arch}/*/*.dll .
+    cp /usr/${_arch}/bin/*.dll .
     ctest || cat Testing/Temporary/LastTest.log
     popd
   done
@@ -51,6 +49,5 @@ package() {
     ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
     popd
   done
-  exit 1
 }
 

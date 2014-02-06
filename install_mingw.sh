@@ -34,4 +34,5 @@ yaourt -S mingw-w64-fftw --noconfirm
 yaourt -S mingw-w64-mixmod --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-python2 --noconfirm
+yaourt -S mingw-w64-python --noconfirm
 
