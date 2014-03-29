@@ -6,7 +6,7 @@ pkgdesc="CMake wrapper for PSP (psp)"
 groups=('psp')
 depends=('cmake' 'psp-gcc')
 license=("GPL")
-url="https://github.com/pspdev/psptoolchain/"
+url="https://github.com/pspdev/psplibraries/"
 source=("psp-cmake"
         "toolchain-psp.cmake")
 md5sums=('SKIP'
