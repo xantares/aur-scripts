@@ -33,7 +33,7 @@ prepare ()
   rm -f gcc/config/mips/allegrex.md gcc/config/mips/psp.h gcc/config/mips/t-allegrex
   patch -p1 -i "$srcdir"/gcc-$pkgver-PSP.patch
   patch -p1 -i "$srcdir"/gcc-$pkgver-texinfofix.patch
-  patch -p2 -i "$srcdir"/gcc-bug_54638.patch
+  patch -p2 -i "$srcdir"/gcc-$kgver-fix54638.patch
   ln -sf "$srcdir"/gmp-5.1.0 gmp
   ln -sf "$srcdir"/mpc-1.0.1 mpc
   ln -sf "$srcdir"/mpfr-3.1.1 mpfr
