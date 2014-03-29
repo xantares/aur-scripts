@@ -1,6 +1,6 @@
 # Maintainer: xantares <xantares09 at hotmail dot com>
 
-pkgname=psp-irkeyb
+pkgname=psp-pspirkeyb
 pkgver=0
 pkgrel=1
 pkgdesc="This is a library for using IRDA keyboards with Playstation Portable (psp)"
