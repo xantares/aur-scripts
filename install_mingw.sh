@@ -35,8 +35,8 @@ yaourt -S mingw-w64-mixmod --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-python2-native --noconfirm
 yaourt -S mingw-w64-python26-native --noconfirm
-yaourt -S mingw-w64-qt4
-yaourt -S mingw-w64-qscintilla
-yaourt -S mingw-w64-qwt5
-yaourt -S mingw-w64-iistackpanel
+yaourt -S mingw-w64-qt4 --noconfirm
+yaourt -S mingw-w64-qscintilla --noconfirm
+yaourt -S mingw-w64-qwt5 --noconfirm
+yaourt -S mingw-w64-iistackpanel --noconfirm
 
