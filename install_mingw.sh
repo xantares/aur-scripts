@@ -38,5 +38,5 @@ yaourt -S mingw-w64-python26-native --noconfirm
 yaourt -S mingw-w64-qt4 --noconfirm
 yaourt -S mingw-w64-qscintilla --noconfirm
 yaourt -S mingw-w64-qwt5 --noconfirm
-yaourt -S mingw-w64-iistackpanel --noconfirm
+yaourt -S mingw-w64-iistaskpanel --noconfirm
 
