@@ -2,7 +2,7 @@
 
 set -e
 
-arch=x86_64
+arch=`uname -m`
 
 rm -rf mingw-w64-$arch*
 mkdir mingw-w64-$arch
