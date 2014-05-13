@@ -25,7 +25,7 @@ build() {
       target=".amd64"
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    msiexec /a "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
+    msiexec /i "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
     if ! test -f libs/libpython${_pybasever}.a
     then
       gendef python${_pybasever}.dll 
