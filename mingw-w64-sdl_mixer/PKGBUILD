@@ -5,13 +5,8 @@ pkgdesc="A simple multi-channel audio mixer (mingw-w64)"
 arch=(any)
 url="http://www.libsdl.org/projects/SDL_mixer"
 license=("zlib")
-makedepends=(mingw-w64-gcc
-mingw-w64-pkg-config
-mingw-w64-smpeg
-mingw-w64-libvorbis
-mingw-w64-libmikmod
-mingw-w64-flac)
-depends=(mingw-w64-crt mingw-w64-sdl)
+depends=(mingw-w64-crt mingw-w64-sdl mingw-w64-libmikmod mingw-w64-libvorbis mingw-w64-smpeg mingw-w64-flac)
+makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 options=(staticlibs !strip !buildflags)
 source=("http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-$pkgver.tar.gz")
 md5sums=('e03ff73d77a55e3572ad0217131dc4a1')
