@@ -1,0 +1,51 @@
+# Maintainer: xantares <xantares09 at hotmail dot com>
+
+pkgname=mingw-w64-libsodium
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="P(ortable|ackageable) NaCl, the Networking and Cryptography library (mingw-w64)"
+arch=('any')
+url="https://github.com/jedisct1/libsodium"
+license=("Public Domain")
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-gcc')
+options=('staticlibs' '!strip' '!buildflags')
+source=("http://download.dnscrypt.org/libsodium/releases/libsodium-${pkgver}.tar.gz")
+md5sums=('6e61dbde3a6b06b898a0e18ca27ab161')
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "$srcdir"/libsodium-${pkgver}
+
+  # memset_s not available although detected
+  sed -i "s|HAVE_MEMSET_S|NO_MEMSET_S|g" configure.ac
+
+  autoreconf -vfi
+}
+
+
+
+build() {
+  cd "$srcdir"/libsodium-${pkgver}
+  for _arch in ${_architectures}; do
+    unset LDFLAGS
+    export HAVE_MEMSET_S=0
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ../configure --prefix=/usr/${_arch} \
+                 --host=${_arch}
+    make
+    popd
+  done
+}
+
+package() {
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/libsodium-${pkgver}/build-${_arch}"
+    make DESTDIR="$pkgdir" install
+    rm "$pkgdir"/usr/${_arch}/lib/*.la
+    rm "$pkgdir"/usr/${_arch}/bin/*.def
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+  done
+}
+
