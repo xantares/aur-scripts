@@ -3,7 +3,7 @@
 pkgname=nlopt
 pkgver=2.4.2
 pkgrel=1
-pkgdesc="non nlinear optimization library"
+pkgdesc="nonlinear optimization library"
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/NLopt"
 license=('LGPL')
