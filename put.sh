@@ -13,7 +13,7 @@ for pkg in $pkgs
 do
   pushd $pkg
   rm -f *.src.tar.gz
-  makepkg --source --force
+  mkaurball -f
   aurploader --auto --keep-cookiejar
   popd
 done
