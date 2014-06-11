@@ -50,7 +50,6 @@ build() {
       ${_mingw} \
       shared \
       zlib-dynamic
-
     # does not build in parallel 
     make -j1
   done
