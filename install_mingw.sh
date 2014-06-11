@@ -22,7 +22,8 @@ chmod a+rx /tmp/conflict.sh
 /tmp/conflict.sh
 }
 
-yaourt -Sya mingw-w64-gcc --noconfirm
+yaourt -Syu --noconfirm
+yaourt -S mingw-w64-gcc --noconfirm
 yaourt -S mingw-w64-lapack --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
 yaourt -S mingw-w64-cmake --noconfirm
@@ -32,6 +33,7 @@ yaourt -S mingw-w64-libsvm --noconfirm
 yaourt -S mingw-w64-fftw --noconfirm
 yaourt -S mingw-w64-mixmod --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
+yaourt -S mingw-w64-python-native --noconfirm
 yaourt -S mingw-w64-python2-native --noconfirm
 yaourt -S mingw-w64-python26-native --noconfirm
 yaourt -S mingw-w64-boost --noconfirm
