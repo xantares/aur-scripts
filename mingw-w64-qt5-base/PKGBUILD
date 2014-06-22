@@ -278,7 +278,7 @@ package() {
     if isStatic; then
       # Drop the qtmain and Qt5Bootstrap static libraries from the static tree as
       # they are already part of the main tree
-      rm -f "${pkgdir}/usr/${_arch}/lib/libqtmain"*
+      rm -f "${pkgdir}/usr/${_arch}/lib/libqt5main"*
       rm -f "${pkgdir}/usr/${_arch}/lib/libQt5Bootstrap"*
       rm -f "${pkgdir}/usr/${_arch}/lib/libQt5OpenGLExtensions"*
       rm -f "${pkgdir}/usr/${_arch}/lib/libQt5PlatformSupport"*
@@ -294,10 +294,6 @@ package() {
       mkdir -p "${pkgdir}/usr/${_arch}/lib/qt/mkspecs/modules"
       mv "${pkgdir}/usr/${_arch}/"*.pri "${pkgdir}/usr/${_arch}/lib/qt/mkspecs/modules"
     else # not static => shared release
-
-      # Rename qtmain.a to a non-conflicting file name
-      # The updated filename is already set correctly in the bundled mkspecs profiles
-      mv "${pkgdir}/usr/${_arch}/lib/libqtmain.a" "${pkgdir}/usr/${_arch}/lib/libqt5main.a"
 
       # The .dll's are installed in both bindir and libdir
       # One copy of the .dll's is sufficient
