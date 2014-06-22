@@ -15,12 +15,13 @@ md5sums=('10cbcc0ce0deb07571be6d4829e756bc')
 build() {
   cd "${srcdir}/Elemental-${pkgver}"
   mkdir -p build && pushd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DELEM_SHARED_LIBRARIES=ON ..
   make
 }
 
 package() {
-  cd "${srcdir}/Elemental-${pkgver}"
+  cd "${srcdir}/Elemental-${pkgver}/build"
   make install DESTDIR="$pkgdir"
 }
 
