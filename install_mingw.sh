@@ -32,7 +32,9 @@ yaourt -S mingw-w64-muparser --noconfirm
 yaourt -S mingw-w64-libsvm --noconfirm
 yaourt -S mingw-w64-fftw --noconfirm
 yaourt -S mingw-w64-mixmod --noconfirm
+yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
+yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-python-native --noconfirm
 yaourt -S mingw-w64-python2-native --noconfirm
 yaourt -S mingw-w64-python26-native --noconfirm
