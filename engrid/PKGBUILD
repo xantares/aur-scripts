@@ -1,4 +1,5 @@
-# Maintainer: LWhitson2 <LWhitson2@gmail.com>
+# Contributor: LWhitson2 <LWhitson2@gmail.com>
+
 pkgname=engrid
 pkgver=1.4
 pkgrel=2
@@ -8,6 +9,7 @@ makedepends=('sed' 'make' 'gcc')
 arch=('i686' 'x86_64')
 license=('GPL')
 source=(https://github.com/enGits/engrid/archive/release-$pkgver.zip)
+md5sums=('bf51fbc3fce9b631fc24ab8523497f82')
 url="http://engits.eu/en/engrid"
 
 
@@ -36,8 +38,9 @@ build() {
       -i engrid.pro.app
       
   qmake-qt4
-  make -j 8
+  make
 }
+
 package(){
   mkdir -p ${pkgdir}/opt/
   mkdir -p ${pkgdir}/usr/bin/
@@ -48,4 +51,4 @@ package(){
   echo '/opt/engrid/src/engrid' >> ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
-md5sums=('bf51fbc3fce9b631fc24ab8523497f82')
+
