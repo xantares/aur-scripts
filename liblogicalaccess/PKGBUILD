@@ -1,0 +1,24 @@
+pkgname=liblogicalaccess
+pkgver=1.75.0
+pkgrel=1
+pkgdesc="RFID Library in C++/C#"
+arch=('i686' 'x86_64')
+url="http://liblogicalaccess.islog.com/"
+license=('LGPL')
+depends=('gcc-libs')
+makedepends=('cmake' 'gcc')
+source=("https://github.com/islog/liblogicalaccess/archive/${pkgver}.tar.gz")
+md5sums=('7be2e06d7484f62e185efe629bb112b4')
+
+build () {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  mkdir -p build && pushd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+}
+
+package () {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  pushd build
+  make install DESTDIR="$pkgdir"
+}
