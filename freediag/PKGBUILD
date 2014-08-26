@@ -1,0 +1,36 @@
+# Contributor: icarus <lysergic2 at comcast.net>
+pkgname=freediag
+pkgver=1.04
+pkgrel=1
+pkgdesc="Freediag is a suite of vehicle diagnostic protocols and an OBD II (mostly) compliant ScanTool."
+arch=('i686' 'x86_64')
+url="http://freediag.sourceforge.net/"
+license=('GNU')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/1.0/$pkgname-$pkgver-src.tar.gz")
+md5sums=('cb6e73dab9f87fbc50ff180d97e950f3')
+
+prepare () {
+  cd "$pkgname-$pkgver-src"
+  # automake complains: archiver requires 'AM_PROG_AR' in 'configure.ac'
+  sed -i "s| -Werror||g" configure.ac
+}
+
+build() {
+  cd "$pkgname-$pkgver-src"
+  chmod +x ./configure ./scantool/mkdep ./scantool/genconfig.sh
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
+}
+
+
+package () {
+  cd "$pkgname-$pkgver-src"
+  make DESTDIR="$pkgdir" install
+  
+  install -d "$pkgdir"/usr/share/doc/freediag
+  cp OLD_CHANGES "$pkgdir"/usr/share/doc/freediag/CHANGES
+  cp README "$pkgdir"/usr/share/doc/freediag
+  cp -R doc/* "$pkgdir"/usr/share/doc/freediag
+}
+
