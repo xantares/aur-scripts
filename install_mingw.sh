@@ -35,9 +35,9 @@ yaourt -S mingw-w64-mixmod --noconfirm
 yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-intel-tbb --noconfirm
-yaourt -S mingw-w64-python-native --noconfirm
-yaourt -S mingw-w64-python2-native --noconfirm
-yaourt -S mingw-w64-python26-native --noconfirm
+yaourt -S mingw-w64-python-bin --noconfirm
+yaourt -S mingw-w64-python2-bin --noconfirm
+yaourt -S mingw-w64-python26-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm
 yaourt -S mingw-w64-qt4 --noconfirm
 yaourt -S mingw-w64-qscintilla --noconfirm

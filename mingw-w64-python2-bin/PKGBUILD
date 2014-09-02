@@ -1,4 +1,4 @@
-pkgname=mingw-w64-python2-native
+pkgname=mingw-w64-python2-bin
 pkgver=2.7.8
 _pybasever=27
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgname=mingw-w64-python-native
+pkgname=mingw-w64-python-bin
 pkgver=3.4.1
 _pybasever=34
 pkgrel=1

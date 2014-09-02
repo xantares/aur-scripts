@@ -1,4 +1,4 @@
-pkgname=mingw-w64-python26-native
+pkgname=mingw-w64-python26-bin
 pkgver=2.6.6
 _pybasever=26
 pkgrel=1
