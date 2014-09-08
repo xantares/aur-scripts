@@ -12,6 +12,7 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname-$pkgver
+  git checkout tags/${pkgver}
   mkdir build && pushd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
