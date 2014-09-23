@@ -8,10 +8,10 @@ url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr')
 makedepends=('mingw-w64-cmake')
-source=("http://downloads.sourceforge.net/opencvlibrary/opencv-$pkgver.zip"
-        mingw-opencv-2.4.2-systemlibs.patch)
-md5sums=('7f958389e71c77abdf5efe1da988b80c'
-         '86bc67c211c695dea9fe5adf3ef9d699')
+source=("opencv-$pkgveri::git+https://github.com/xantares/opencv.git#branch=patch-1")
+#        mingw-opencv-2.4.2-systemlibs.patch)
+md5sums=('SKIP')
+#         '86bc67c211c695dea9fe5adf3ef9d699')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -19,7 +19,7 @@ prepare() {
 
   # fedora patch
   # https://nucleo.fedorapeople.org/rpms/mingw-opencv/
-  patch -p1 -i "${srcdir}"/mingw-opencv-2.4.2-systemlibs.patch
+  #patch -p1 -i "${srcdir}"/mingw-opencv-2.4.2-systemlibs.patch
 
   # no clue how to fix this one properly
   # https://bugzilla.redhat.com/show_bug.cgi?id=843436
@@ -43,6 +43,7 @@ build() {
       -DBUILD_TESTS=OFF \
       -DBUILD_DOCS=OFF \
       -DWITH_FFMPEG=OFF \
+      -DWITH_IPP=OFF \
       -DINSTALL_C_EXAMPLES=0 \
       -DINSTALL_PYTHON_EXAMPLES=0 \
       -DBUILD_ZLIB=OFF \
@@ -63,6 +64,7 @@ build() {
       -DBUILD_TESTS=OFF \
       -DBUILD_DOCS=OFF \
       -DWITH_FFMPEG=OFF \
+      -DWITH_IPP=OFF \
       -DINSTALL_C_EXAMPLES=0 \
       -DINSTALL_PYTHON_EXAMPLES=0 \
       -DBUILD_ZLIB=OFF \
@@ -84,15 +86,15 @@ package() {
     make DESTDIR="$pkgdir" install
     cd "$srcdir/opencv-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    install -d "$pkgdir"/usr/${_arch}/bin
-    install -m755 "$pkgdir"/usr/${_arch}/x64/mingw/bin/*.dll "$pkgdir"/usr/${_arch}/bin
-    install -d "$pkgdir"/usr/${_arch}/lib/
-    install -m644 "$pkgdir"/usr/${_arch}/x64/mingw/lib/*.dll.a "$pkgdir"/usr/${_arch}/x64/mingw/staticlib/*.a "$pkgdir"/usr/${_arch}/lib
-    install -d "$pkgdir"/usr/${_arch}/lib/cmake/opencv
-    install -m644 "$pkgdir"/usr/${_arch}/*.cmake "$pkgdir"/usr/${_arch}/lib/cmake/opencv
-    rm -r "$pkgdir"/usr/${_arch}/x64
-    rm "$pkgdir"/usr/${_arch}/LICENSE
-    rm "$pkgdir"/usr/${_arch}/*.cmake
+    #install -d "$pkgdir"/usr/${_arch}/bin
+    #install -m755 "$pkgdir"/usr/${_arch}/x64/mingw/bin/*.dll "$pkgdir"/usr/${_arch}/bin
+    #install -d "$pkgdir"/usr/${_arch}/lib/
+    #install -m644 "$pkgdir"/usr/${_arch}/x64/mingw/lib/*.dll.a "$pkgdir"/usr/${_arch}/x64/mingw/staticlib/*.a "$pkgdir"/usr/${_arch}/lib
+    #install -d "$pkgdir"/usr/${_arch}/lib/cmake/opencv
+    #install -m644 "$pkgdir"/usr/${_arch}/*.cmake "$pkgdir"/usr/${_arch}/lib/cmake/opencv
+    #rm -r "$pkgdir"/usr/${_arch}/x64
+    #rm "$pkgdir"/usr/${_arch}/LICENSE
+    #rm "$pkgdir"/usr/${_arch}/*.cmake
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done

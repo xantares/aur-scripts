@@ -24,6 +24,9 @@ chmod a+rx /tmp/conflict.sh
 
 yaourt -Syu --noconfirm
 yaourt -S mingw-w64-gcc --noconfirm
+cd /tmp && rm -rf mingw-w64-libunistring && yaourt -G mingw-w64-libunistring && cd mingw-w64-libunistring && sed -i "s|ftp:|http:|g" PKGBUILD && makepkg --asroot && pacman -U mingw-w64-libunistring*.pkg.tar.xz --noconfirm
+
+
 yaourt -S mingw-w64-lapack --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
 yaourt -S mingw-w64-cmake --noconfirm
