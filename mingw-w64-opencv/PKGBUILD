@@ -8,7 +8,7 @@ url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr')
 makedepends=('mingw-w64-cmake')
-source=("opencv-$pkgveri::git+https://github.com/xantares/opencv.git#branch=patch-1")
+source=("opencv-$pkgver::git+https://github.com/xantares/opencv.git#branch=patch-1")
 #        mingw-opencv-2.4.2-systemlibs.patch)
 md5sums=('SKIP')
 #         '86bc67c211c695dea9fe5adf3ef9d699')
@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/opencv-$pkgver"
-
+  git reset --hard
   # fedora patch
   # https://nucleo.fedorapeople.org/rpms/mingw-opencv/
   #patch -p1 -i "${srcdir}"/mingw-opencv-2.4.2-systemlibs.patch
@@ -44,6 +44,7 @@ build() {
       -DBUILD_DOCS=OFF \
       -DWITH_FFMPEG=OFF \
       -DWITH_IPP=OFF \
+      -DWITH_DSHOW=OFF \
       -DINSTALL_C_EXAMPLES=0 \
       -DINSTALL_PYTHON_EXAMPLES=0 \
       -DBUILD_ZLIB=OFF \
@@ -65,6 +66,7 @@ build() {
       -DBUILD_DOCS=OFF \
       -DWITH_FFMPEG=OFF \
       -DWITH_IPP=OFF \
+      -DWITH_DSHOW=OFF \
       -DINSTALL_C_EXAMPLES=0 \
       -DINSTALL_PYTHON_EXAMPLES=0 \
       -DBUILD_ZLIB=OFF \
