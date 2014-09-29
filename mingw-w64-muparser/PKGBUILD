@@ -16,13 +16,16 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/muparser_v${pkgver//./_}
+
+  # if defined, MUPARSER_DLL macro results in unresolved symbols in dll
+  sed -i "/DMUPARSER_DLL/d" Makefile.in
+
   #sed -i "s|//#define MUP_USE_OPENMP|#define MUP_USE_OPENMP|g" include/muParserDef.h
 }
 
 
 build() {
   cd "$srcdir"/muparser_v${pkgver//./_}
-  sed -i "/DMUPARSER_DLL/d" Makefile.in
   for _arch in ${_architectures}; do
     unset LDFLAGS
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
