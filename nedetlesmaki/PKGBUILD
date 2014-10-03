@@ -1,5 +1,5 @@
 pkgname=nedetlesmaki
-pkgver=r1143.1eb057c
+pkgver=r1145.4e3b84a
 pkgrel=1
 pkgdesc='Puzzle game with isometric 3d graphics inspired by Sokoban'
 arch=('i686', 'x86_64')
