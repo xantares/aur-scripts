@@ -21,10 +21,8 @@ package ()
   cd "$srcdir/javaemvreader"
   install -d "$pkgdir"/usr/bin
   install -d "$pkgdir"/usr/share/java/javaemvreader
-  install -m644 target/javaemvreader-*.jar "$pkgdir"/usr/share/java/javaemvreader
-  install -m644 target/jnlp/*.jar "$pkgdir"/usr/share/java/javaemvreader
-  install -m644 repo/com/licel/jcardsim/*/*.jar "$pkgdir"/usr/share/java/javaemvreader
+  install -m644  target/javaemvreader-*-SNAPSHOT-full.jar "$pkgdir"/usr/share/java/javaemvreader
   echo "#!/bin/sh" > run
-  echo 'exec "$JAVA_HOME/bin/java" -Djava.library.path=/usr/share/java/javaemvreader/natives -jar `ls /usr/share/java/javaemvreader/javaemvreader-*-SNAPSHOT.jar` "$@"' >> run
+  echo 'exec "$JAVA_HOME/bin/java" -jar `ls /usr/share/java/javaemvreader/javaemvreader-*-SNAPSHOT-full.jar` "$@"' >> run
   install -m755 run "$pkgdir"/usr/bin/javaemvreader
 }
