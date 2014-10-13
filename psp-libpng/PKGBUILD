@@ -12,10 +12,12 @@ makedepends=('psp-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://sourceforge.net/projects/libpng/files/libpng15/older-releases/${pkgver}/libpng-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/pspdev/psplibraries/master/patches/libpng-${pkgver}-PSP.patch")
-md5sums=('SKIP' 'SKIP')
+md5sums=('944b56a84b65d94054cc73d7ff965de8'
+         'SKIP')
 
 prepare() {
   cd "$srcdir/libpng-${pkgver}"
+  rm -f Makefile pnglibconf.h README.PSP screenshot/main.c screenshot/Makefile 
   patch -p1 -i "$srcdir"/libpng-${pkgver}-PSP.patch
 }
 
@@ -27,7 +29,7 @@ build()
 
 package()
 {
-  cd "$srcdir/psp-ports/libpng"
+  cd "$srcdir/libpng-${pkgver}"
   make install PSPDIR="$pkgdir"/usr/psp
 }
 
