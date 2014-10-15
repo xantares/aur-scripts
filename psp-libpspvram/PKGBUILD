@@ -22,6 +22,7 @@ build()
 package()
 {
   cd "$srcdir/psp-ports/libpspvram"
+  install -d "$pkgdir"/usr/psp/{lib,include}
   make install PSPDIR="$pkgdir"/usr/psp
 }
 
