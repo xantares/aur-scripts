@@ -17,6 +17,6 @@ build() {
 
 package() {
   cd "${srcdir}/hope-$pkgver"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --root="${pkgdir}"
 }
 
