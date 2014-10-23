@@ -1,0 +1,25 @@
+
+pkgname=mingw-w64-configure
+pkgver=0
+pkgrel=1
+arch=(any)
+pkgdesc="configure wrapper for MinGW (mingw-w64)"
+depends=(mingw-w64-gcc)
+license=("MIT")
+url="http://fedoraproject.org/wiki/MinGW"
+source=("mingw-configure.sh")
+md5sums=('SKIP')
+
+build() {
+  cd "$srcdir"
+  sed "s|@TRIPLE@|i686-w64-mingw32|g" mingw-configure.sh > i686-w64-mingw32-configure
+  sed "s|@TRIPLE@|x86_64-w64-mingw32|g" mingw-configure.sh > x86_64-w64-mingw32-configure
+}
+
+package() {
+  cd "$pkgdir"
+  install -d "${pkgdir}"/usr/bin
+  install -m 755 "${srcdir}"/i686-w64-mingw32-configure "${pkgdir}"/usr/bin/
+  install -m 755 "${srcdir}"/x86_64-w64-mingw32-configure "${pkgdir}"/usr/bin/
+}
+
