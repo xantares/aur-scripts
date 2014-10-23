@@ -1,6 +1,9 @@
 #!/bin/sh
 mingw_prefix=/usr/@TRIPLE@
 
+export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+
 PATH=${mingw_prefix}/bin:$PATH cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=${mingw_prefix} \
     -DCMAKE_INSTALL_LIBDIR:PATH=${mingw_prefix}/lib \
