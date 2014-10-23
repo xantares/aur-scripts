@@ -1,6 +1,8 @@
 #!/bin/sh
 mingw_prefix=/usr/@TRIPLE@
 
+export PKG_CONFIG_LIBDIR="${mingw_prefix}/lib/pkgconfig"
+
 export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
 export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
 
