@@ -39,7 +39,7 @@ yaourt -S mingw-w64-python-bin --noconfirm
 yaourt -S mingw-w64-python2-bin --noconfirm
 yaourt -S mingw-w64-python26-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm
-yaourt -G mingw-w64-qt4 --noconfirm && cd mingw-w64-qt4 && makepkg --asroot && pacman -U mingw-w64-qt4-*-any.pkg.tar.xz && rm -r src 
+TMPDIR="$PWD" yaourt -S mingw-w64-qt4 --noconfirm
 yaourt -S mingw-w64-qscintilla --noconfirm
 yaourt -S mingw-w64-qwt5 --noconfirm
 yaourt -S mingw-w64-iistaskpanel --noconfirm

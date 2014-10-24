@@ -6,7 +6,7 @@ arch=('any')
 url="http://www.fftw.org"
 license=("GPL")
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-configure' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-configure')
 checkdepends=('wine')
 options=(staticlibs !strip !buildflags)
 source=("$url/fftw-$pkgver.tar.gz")
@@ -60,13 +60,6 @@ check() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/fftw-${pkgver}/build-${_arch}-d"
     make check
-    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-ld"
-    #make check
-    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-f"
-    #make check
-    cd "${srcdir}/fftw-${pkgver}/build-${_arch}-q"
-    cp /usr/${_arch}/bin/{libgcc*.dll,libquadmath*.dll,libwinpthread*.dll} tests
-    #make check 
   done
 }
 
