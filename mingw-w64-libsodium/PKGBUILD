@@ -14,12 +14,6 @@ md5sums=('3093dabe4e038d09f0d150cef064b2f7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd "$srcdir"/libsodium-${pkgver}
-}
-
-
-
 build() {
   cd "$srcdir"/libsodium-${pkgver}
   for _arch in ${_architectures}; do
