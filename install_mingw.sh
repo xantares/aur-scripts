@@ -39,7 +39,7 @@ yaourt -S mingw-w64-python-bin --noconfirm
 yaourt -S mingw-w64-python2-bin --noconfirm
 yaourt -S mingw-w64-python26-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm
-TMPDIR="$PWD" yaourt -S mingw-w64-qt4 --noconfirm || { rm /usr/*-w64-mingw32/bin/Qt*.dll; pacman -U yaourt-tmp-root/mingw-w64-qt4-*.pkg.tar.xz; rm -rf yaourt-tmp-root; }
+TMPDIR="$PWD" yaourt -S mingw-w64-qt4 --noconfirm || { rm /usr/*-w64-mingw32/bin/Qt*.dll; pacman -U yaourt-tmp-root/mingw-w64-qt4-*.pkg.tar.xz --noconfirm; rm -rf yaourt-tmp-root; }
 yaourt -S mingw-w64-qscintilla --noconfirm
 yaourt -S mingw-w64-qwt5 --noconfirm
 yaourt -S mingw-w64-iistaskpanel --noconfirm
