@@ -1,5 +1,5 @@
 
-pkgname=mingw-64-coinor-cgl
+pkgname=mingw-w64-coinor-cgl
 pkgver=0.58.10
 pkgrel=1
 pkgdesc="COIN-OR Cut Generation Library (mingw-w64)"
