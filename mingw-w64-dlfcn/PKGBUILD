@@ -15,7 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/dlfcn-win32-$pkgver"
-  sed -i "s|\-Wall \-O3 \-fomit\-frame\-pointer|\-O2 \-g \-pipe \-Wall \-Wp,\-D_FORTIFY_SOURCE=2 \-fexceptions \-\-param=ssp\-buffer\-size=4|g" Makefile
+  sed -i "s|\-Wall \-O3 \-fomit\-frame\-pointer|\-O2 \-g \-pipe \-Wall \-Wp,\-D_FORTIFY_SOURCE=2 \-fexceptions \-\-param=ssp\-buffer\-size=4 \-mms\-bitfields|g" Makefile
 }
 
 build()
