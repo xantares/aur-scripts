@@ -32,18 +32,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/openssl-$_ver"
-
-  # No support for out-of-source builds => create two copies
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}/build-${_arch}"
-    cp -a "${srcdir}/openssl-$_ver/"* "${srcdir}/build-${_arch}"
-  done
-
-  for _arch in ${_architectures}; do
+    # No support for out-of-source builds => create two copies
+    mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/openssl-$_ver/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
     _mingw=mingw
     [ "${_arch}" = 'x86_64-w64-mingw32' ] && _mingw=mingw64
-    cd "${srcdir}/build-${_arch}"
-    unset LDFLAGS
     ./Configure \
       --prefix=/usr/${_arch} \
       --cross-compile-prefix=${_arch}- \
