@@ -19,7 +19,7 @@ build()
   cd "$srcdir/libsvm-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-g++ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -mms-bitfields -c ../svm.cpp
+    ${_arch}-g++ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -c ../svm.cpp
     ${_arch}-g++ -shared -o libsvm-2.dll svm.o -Wl,--out-implib,libsvm.dll.a 
     ${_arch}-ar cru libsvm.a svm.o 
     ${_arch}-ranlib libsvm.a
