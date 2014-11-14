@@ -13,7 +13,7 @@ source=("http://ftp.gnu.org/pub/gnu/libiconv/libiconv-$pkgver.tar.gz"
          "01-reloc-libiconv-1.14.patch"
          "02-reloc-libiconv-1.14.patch"
          "03-cygwin-libiconv-1.14.patch"
-         "libiconv-1.14-2.src.patch")
+         "libiconv-1.14-2-mingw.patch")
 md5sums=('e34509b1623cec449dfeb73d7ce9c6c6'
          '7fe4ced6aa978f0a05b91d85daafce96'
          'da8ba76125096d1dc2a3fa7ded113131'
@@ -30,7 +30,7 @@ prepare() {
   patch -p2 -i ../01-reloc-libiconv-1.14.patch
   patch -p2 -i ../02-reloc-libiconv-1.14.patch
   patch -p2 -i ../03-cygwin-libiconv-1.14.patch
-  patch -p2 -i ../libiconv-1.14-2.src.patch
+  patch -p2 -i ../libiconv-1.14-2-mingw.patch
 }
 
 build() {
