@@ -18,7 +18,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-      --host=${_arch} \
       --enable-custom-modes \
       --disable-shared # FIXME: x86_64 dll is not created
     make
