@@ -2,7 +2,7 @@
 
 set -e
 
-#remove all: yaourt -Rscnd mingw-w64
+#remove all: sudo yaourt -Rscnd mingw-w64
 
 function install_conflict {
 
@@ -25,10 +25,10 @@ chmod a+rx /tmp/conflict.sh
 yaourt -Syu --noconfirm
 yaourt -S mingw-w64-gcc --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
-yaourt -S mingw-w64-muparser --noconfirm
 yaourt -S mingw-w64-libsvm --noconfirm
-yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
+yaourt -S mingw-w64-muparser --noconfirm
+yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-mixmod --noconfirm
 yaourt -S mingw-w64-libxml2 --noconfirm
