@@ -33,6 +33,7 @@ yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-mixmod --noconfirm
 yaourt -S mingw-w64-libxml2 --noconfirm
 yaourt -S mingw-w64-lapack --noconfirm
+yaourt -S mingw-w64-hmat-oss --noconfirm
 yaourt -S mingw-w64-fftw --noconfirm
 yaourt -S mingw-w64-agrum --noconfirm
 yaourt -S mingw-w64-python-bin --noconfirm
