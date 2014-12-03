@@ -1,0 +1,37 @@
+# Contributor: Mildred Ki'Lya <mildred-pub.aur@mildred.fr>
+
+pkgname=mingw-w64-clang
+pkgver=r57.c7579f9
+pkgrel=1
+pkgdesc="Clang wrapper for cross-compiling to Windows using Mingw"
+url="https://github.com/tpoechtrager/wclang"
+arch=('x86_64' 'i686')
+license=(GPL)
+depends=(mingw-w64-gcc clang)
+makedepends=(git)
+source=("git+https://github.com/tpoechtrager/wclang.git")
+md5sums=(SKIP)
+
+pkgver() {
+  cd "$srcdir/wclang"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/wclang"
+  ./bootstrap.sh
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "${srcdir}/wclang"
+  make DESTDIR="${pkgdir}" install
+  rm "$pkgdir"/usr/bin/w[36]*
+  rm "$pkgdir"/usr/bin/*-pc-*
+  rm "$pkgdir"/usr/bin/*static*
+  rm "$pkgdir"/usr/bin/i[45]86*
+  rm "$pkgdir"/usr/bin/amd*
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
