@@ -6,7 +6,7 @@ arch=`uname -m`
 
 rm -rf mingw-w64-$arch*
 mkdir mingw-w64-$arch
-for pkgname in mingw-w64-binutils mingw-w64-headers mingw-w64-crt mingw-w64-winpthreads mingw-w64-gcc mingw-w64-blas mingw-w64-lapack mingw-w64-cmake mingw-w64-libxml2 mingw-w64-libgnurx mingw-w64-dlfcn mingw-w64-gettext mingw-w64-termcap mingw-w64-libiconv mingw-w64-libunistring mingw-w64-zlib mingw-w64-muparser mingw-w64-intel-tbb mingw-w64-boost mingw-w64-python-bin mingw-w64-python2-bin mingw-w64-python26-bin mingw-w64-fftw mingw-w64-mixmod mingw-w64-agrum mingw-w64-fann mingw-w64-libsvm mingw-w64-cblas mingw-w64-hmat-oss
+for pkgname in mingw-w64-binutils mingw-w64-headers mingw-w64-crt mingw-w64-winpthreads mingw-w64-gcc mingw-w64-blas mingw-w64-lapack mingw-w64-cmake mingw-w64-libxml2 mingw-w64-libgnurx mingw-w64-dlfcn mingw-w64-gettext mingw-w64-termcap mingw-w64-libiconv mingw-w64-libunistring mingw-w64-zlib mingw-w64-muparser mingw-w64-intel-tbb mingw-w64-boost mingw-w64-python-bin mingw-w64-python2-bin mingw-w64-python26-bin mingw-w64-fftw mingw-w64-mixmod mingw-w64-agrum mingw-w64-fann mingw-w64-libsvm mingw-w64-cblas mingw-w64-hmat-oss mingw-w64-tools
 # mingw-w64-libpng mingw-w64-dbus mingw-w64-libjpeg-turbo mingw-w64-libtiff mingw-w64-openssl mingw-w64-expat mingw-w64-qt4 mingw-w64-qscintilla mingw-w64-qwt5 mingw-w64-iistaskpanel 
 do
   echo "-- $pkgname"
