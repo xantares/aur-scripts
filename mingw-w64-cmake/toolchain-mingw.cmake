@@ -19,6 +19,7 @@ SET(QT_INCLUDE_DIRS_NO_SYSTEM ON)
 
 # set the resource compiler (RHBZ #652435)
 SET(CMAKE_RC_COMPILER @TRIPLE@-windres)
+SET(CMAKE_MC_COMPILER @TRIPLE@-windmc)
 
 # override boost thread component suffix as mingw-w64-boost is compiled with threadapi=win32
 SET(Boost_THREADAPI win32)
