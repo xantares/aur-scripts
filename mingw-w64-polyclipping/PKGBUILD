@@ -35,7 +35,7 @@ build() {
     ${_arch}-cmake \
       -DBUILD_SHARED_LIBS=OFF \
       ../cpp
-    make VERBOSE=1
+    make
     popd
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
