@@ -1,12 +1,12 @@
 
-pkgname=mingw-w64-coinor-utils
+pkgname=mingw-w64-coin-or-coinutils
 pkgver=2.9.17
 pkgrel=1
 pkgdesc="COIN-OR collection of utility classes (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/CoinUtils"
 license=('EPL')
-groups=('coinor')
+groups=('coin-or')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')

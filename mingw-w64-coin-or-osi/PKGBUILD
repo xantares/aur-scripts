@@ -1,12 +1,12 @@
-pkgname=mingw-w64-coinor-osi
+pkgname=mingw-w64-coin-or-osi
 pkgver=0.106.10
 pkgrel=1
 pkgdesc="COIN-OR Open Solver Interface (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Osi"
 license=('EPL')
-groups=('coinor')
-depends=('mingw-w64-coinor-utils')
+groups=('coin-or')
+depends=('mingw-w64-coin-or-coinutils')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Osi/Osi-${pkgver}.tgz")
