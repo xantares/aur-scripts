@@ -7,7 +7,7 @@ arch=('any')
 url="https://projects.coin-or.org/CoinUtils"
 license=('EPL')
 groups=('coin-or')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-bzip2' 'mingw-w64-zlib')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/CoinUtils/CoinUtils-${pkgver}.tgz")
@@ -17,9 +17,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir"/CoinUtils-$pkgver
-  #sed -i "98ilibCoinUtils_la_LDFLAGS += -no-undefined" CoinUtils/src/Makefile.am
-  # FIXME: cannot boostrap
-  # autoreconf -vi 
+  #sed -i "70ilibCoinUtils_la_LIBADD = -lbz2 -lz -llapack -lblas" CoinUtils/src/Makefile.in
+  #sed -i "424ilibCoinUtils_la_LDFLAGS += -no-undefined" CoinUtils/src/Makefile.in
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure -C
