@@ -1,4 +1,4 @@
-pkgname=coin-ipopt
+pkgname=coin-or-ipopt
 pkgver=3.11.10
 pkgrel=1
 pkgdesc="Interior Point OPTimizer"
