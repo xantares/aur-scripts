@@ -27,6 +27,11 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/Bcp-$pkgver"
+  make test
+}
+
 package() {
   cd "$srcdir/Bcp-$pkgver/Bcp"
   PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
