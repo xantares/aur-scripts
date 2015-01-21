@@ -24,10 +24,10 @@ build() {
   make
 }
 
-# check() {
-#   cd DyLP-$pkgver
-# #   make test
-# }
+#check() {
+#  cd DyLP-$pkgver
+#  make test
+#}
 
 package() {
   cd DyLP-$pkgver
