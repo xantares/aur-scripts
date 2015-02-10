@@ -1,35 +1,37 @@
 # Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Daniel Ehlers <danielehlers@mindeye.net>
-pkgname=coin-or-dylp
-pkgver=1.10.0
+
+pkgname=coin-or-vol
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="COIN-OR Linear programming solver using of the dynamic simplex algorithm"
+pkgdesc="COIN-OR Volume Algorithm"
 arch=('i686' 'x86_64')
-url="https://projects.coin-or.org/DyLP"
+url="https://projects.coin-or.org/Vol"
 license=('EPL')
 groups=('coin-or')
 depends=('coin-or-osi')
-source=("http://www.coin-or.org/download/source/DyLP/DyLP-${pkgver}.zip")
-sha1sums=('7c27fb7735a64c92e68fba3e697ded07b91f95bb')
+source=("http://www.coin-or.org/download/source/Vol/Vol-${pkgver}.tgz")
+sha1sums=('e53dd21eb28fb5a60ed39492d054cceafeb39ddf')
 
 build() {
-  cd DyLP-$pkgver
+  cd Vol-$pkgver/Vol
   COIN_SKIP_PROJECTS="Sample" \
   ./configure --prefix=/usr \
               --with-osi-lib="$(pkg-config --libs osi)" \
               --with-osi-incdir="/usr/include/coin/" \
               --with-coinutils-lib="$(pkg-config --libs coinutils)" \
-              --with-coinutils-incdir="/usr/include/coin/" -C
+              --with-coinutils-incdir="/usr/include/coin/" \
+              --enable-dependency-linking
   make
 }
 
 check() {
-  cd DyLP-$pkgver
-  make test SAMPLE_DATA=`pkg-config --variable=datadir coindatasample`
+  cd Vol-$pkgver/Vol
+  make test
 }
 
 package() {
-  cd DyLP-$pkgver
+  cd Vol-$pkgver/Vol
   PKG_CONFIG_LIBDIR="$pkgdir"/usr/lib/pkgconfig/ \
-  make DESTDIR="$pkgdir"/ install
+  make DESTDIR="$pkgdir" install
 }
