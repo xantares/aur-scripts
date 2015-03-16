@@ -20,7 +20,7 @@ chmod a+rx /tmp/conflict.sh
 /tmp/conflict.sh
 }
 
-gpg --recv D605848ED7E69871 D9C4D26D0E604491 4DE8FF2A63C7CC90 # gettext, openssl, dbus
+gpg --recv D605848ED7E69871 D9C4D26D0E604491 4DE8FF2A63C7CC90 BB5869F064EA74AB # gettext, openssl, dbus, readline
 
 # remove all
 yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean" 
