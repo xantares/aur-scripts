@@ -19,11 +19,11 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   git checkout tags/${pkgver}
-  mkdir build && pushd build
+  mkdir -p build && pushd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
   popd
-  mkdir build_py && pushd build_py
+  mkdir -p build_py && pushd build_py
   cmake -DCMAKE_INSTALL_PREFIX=/usr ../wrappers/pyAgrum
   make
 }
