@@ -2,18 +2,24 @@
 
 set -e
 
-if test "$#" -lt 1
+if test "$#" -lt 2
 then
-  pkgs=`cat package_list.txt`
+  echo "usage: $0 pkgname \"git commit comment\""
+  exit
 else
-  pkgs=$*
+  pkg="$1"
+  comment="$2"
 fi
 
-for pkg in $pkgs
-do
-  pushd $pkg
-  rm -f *.src.tar.gz
-  mkaurball -f
-  aurploader --auto --keep-cookiejar
-  popd
-done
+pushd $pkg
+rm -f *.src.tar.gz
+
+# push to aur3
+mkaurball -f
+aurploader --auto --keep-cookiejar
+
+# push to aur4
+mksrcinfo
+git commit -a -m "$comment"
+git push
+
