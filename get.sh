@@ -9,5 +9,6 @@ fi
 
 for pkg in $pkgs
 do
-  yaourt -G $pkg --noconfirm
+  git clone ssh://aur@aur4.archlinux.org/$pkg.git
+  #yaourt -G $pkg --noconfirm
 done
