@@ -4,22 +4,30 @@ set -e
 
 if test "$#" -lt 2
 then
-  echo "usage: $0 pkgname \"git commit comment\""
+  echo "usage: $0 pkgname1 [pkgname2] \"git commit comment\""
   exit
-else
-  pkg="$1"
-  comment="$2"
 fi
 
-pushd $pkg
-rm -f *.src.tar.gz
+# all args except last
+pkgs=${@:1:$#-1}
 
-# push to aur3
-mkaurball -f
-aurploader --auto --keep-cookiejar
+# comment is the last arg
+for comment; do true; done
 
-# push to aur4
-mksrcinfo
-git commit -a -m "$comment"
-git push
+for pkg in $pkgs
+do
+  pushd $pkg
+  rm -f *.src.tar.gz
+
+  # push to aur3
+  mkaurball -f
+  aurploader --auto --keep-cookiejar
+
+  # push to aur4
+  mksrcinfo
+  git commit -a -m "$comment"
+  git push
+
+  popd
+done
 

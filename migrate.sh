@@ -2,12 +2,7 @@
 
 set -e
 
-if test "$#" -lt 1
-then
-  pkgs=`cat package_list.txt`
-else
-  pkgs=$*
-fi
+pkgs=$*
 
 for pkg in $pkgs
 do

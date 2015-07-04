@@ -1,11 +1,6 @@
 #!/bin/sh
 
-if test "$#" -lt 1
-then
-  pkgs=`cat package_list.txt`
-else 
-  pkgs=$1
-fi
+pkgs=$*
 
 for pkg in $pkgs
 do
