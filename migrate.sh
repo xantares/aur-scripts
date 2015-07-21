@@ -7,7 +7,7 @@ pkgs=$*
 for pkg in $pkgs
 do
   git clone ssh://aur@aur4.archlinux.org/$pkg.git
-  yaourt -G $pkg --noconfirm
+  yaourt -G $pkg --noconfirm --aur-url https://aur.archlinux.org
   pushd $pkg
   git add *
   mksrcinfo
