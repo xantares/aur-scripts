@@ -17,13 +17,8 @@ for comment; do true; done
 for pkg in $pkgs
 do
   pushd $pkg
-  rm -f *.src.tar.gz
 
-  # push to aur3
-  mkaurball -f
-  aurploader --auto --keep-cookiejar
-
-  # push to aur4
+  # push to aur
   mksrcinfo
   git commit -a -m "$comment"
   git push
