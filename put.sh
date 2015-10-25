@@ -20,6 +20,7 @@ do
 
   # push to aur
   mksrcinfo
+  git add PKGBUILD .SRCINFO
   git commit -a -m "$comment"
   git push
 

@@ -4,15 +4,24 @@ set -e
 
 pkgs=$*
 
+if ! test -d aur-mirror
+then
+  git clone --depth 1 git://pkgbuild.com/aur-mirror.git
+fi
+
 for pkg in $pkgs
 do
-  git clone ssh://aur@aur4.archlinux.org/$pkg.git
-  yaourt -G $pkg --noconfirm --aur-url https://aur.archlinux.org
-  pushd $pkg
-  git add *
-  mksrcinfo
-  git add .SRCINFO
-  git commit -a -m "Initial import"||echo "nop"
-  git push
-  popd
+  if test -f "aur-mirror/$pkg/PKGBUILD"
+  then
+    git clone ssh://aur@aur.archlinux.org/$pkg.git
+    cp aur-mirror/$pkg/* $pkg
+    pushd $pkg
+    mksrcinfo
+    git add * .SRCINFO
+    git commit -a -m "Initial import"
+    git push
+    popd
+  else
+    echo "$pkg does not exist"
+  fi
 done
