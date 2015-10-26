@@ -33,6 +33,7 @@ yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-libsvm --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
 yaourt -S mingw-w64-muparser --noconfirm
+yaourt -S mingw-w64-nlopt --noconfirm
 yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-mixmod --noconfirm
