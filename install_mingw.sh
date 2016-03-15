@@ -36,7 +36,7 @@ yaourt -S mingw-w64-muparser --noconfirm
 yaourt -S mingw-w64-nlopt --noconfirm
 yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-intel-tbb --noconfirm
-yaourt -S mingw-w64-mixmod --noconfirm
+yaourt -S mingw-w64-libmixmod --noconfirm
 yaourt -S mingw-w64-nlopt --noconfirm
 yaourt -S mingw-w64-libxml2 --noconfirm
 yaourt -S mingw-w64-blas --noconfirm
@@ -50,7 +50,7 @@ yaourt -S mingw-w64-python26-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm --tmp $PWD
 yaourt -S mingw-w64-libzip --noconfirm
 yaourt -S mingw-w64-qt4 --noconfirm --tmp $PWD || { rm /usr/*-w64-mingw32/bin/Qt*.dll; pacman -U yaourt-tmp-root/mingw-w64-qt4-*.pkg.tar.xz --noconfirm; rm -rf yaourt-tmp-root; }
-yaourt -S mingw-w64-qscintilla --noconfirm
+yaourt -S mingw-w64-qscintilla-qt4 --noconfirm
 yaourt -S mingw-w64-qwt --noconfirm
 yaourt -S mingw-w64-iistaskpanel --noconfirm
 
