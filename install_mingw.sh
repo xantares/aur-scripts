@@ -2,6 +2,12 @@
 
 set -e
 
+#cd /usr/bin
+#patch -p0 -i /usr/share/makepkg-asroot/makepkg-asroot.patch
+
+
+
+
 function install_conflict {
 
 cat > /tmp/conflict.sh << EOF
