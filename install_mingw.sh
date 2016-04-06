@@ -48,11 +48,11 @@ yaourt -S mingw-w64-blas --noconfirm
 yaourt -S mingw-w64-lapack --noconfirm
 yaourt -S mingw-w64-hmat-oss --noconfirm
 yaourt -S mingw-w64-fftw --noconfirm
-yaourt -S mingw-w64-agrum --noconfirm
 yaourt -S mingw-w64-python-bin --noconfirm
 yaourt -S mingw-w64-python2-bin --noconfirm
 yaourt -S mingw-w64-python26-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm --tmp $PWD
+yaourt -S mingw-w64-agrum --noconfirm
 yaourt -S mingw-w64-libzip --noconfirm
 yaourt -S mingw-w64-qt4 --noconfirm --tmp $PWD || { rm /usr/*-w64-mingw32/bin/Qt*.dll; pacman -U yaourt-tmp-root/mingw-w64-qt4-*.pkg.tar.xz --noconfirm; rm -r yaourt-tmp-root; }
 yaourt -S mingw-w64-qscintilla-qt4 --noconfirm
