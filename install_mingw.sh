@@ -35,6 +35,7 @@ yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean"
 yaourt -Syu --noconfirm
 
 yaourt -S mingw-w64-gcc --noconfirm
+yaourt -S mingw-w64-exprtk-git --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-libsvm --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
