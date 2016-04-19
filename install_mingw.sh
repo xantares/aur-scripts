@@ -45,7 +45,6 @@ yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-libmixmod --noconfirm
 yaourt -S mingw-w64-nlopt --noconfirm
 yaourt -S mingw-w64-libxml2 --noconfirm
-yaourt -S mingw-w64-blas --noconfirm
 yaourt -S mingw-w64-lapack --noconfirm
 yaourt -S mingw-w64-hmat-oss --noconfirm
 yaourt -S mingw-w64-fftw --noconfirm
