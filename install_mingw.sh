@@ -50,7 +50,7 @@ yaourt -S mingw-w64-hmat-oss --noconfirm
 yaourt -S mingw-w64-fftw --noconfirm
 yaourt -S mingw-w64-python-bin --noconfirm
 yaourt -S mingw-w64-python2-bin --noconfirm
-yaourt -S mingw-w64-python26-bin --noconfirm
+yaourt -S mingw-w64-python34-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm --tmp $PWD
 yaourt -S mingw-w64-agrum --noconfirm
 yaourt -S mingw-w64-libzip --noconfirm
