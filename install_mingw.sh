@@ -40,7 +40,7 @@ yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-libsvm --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
 yaourt -S mingw-w64-muparser --noconfirm
-yaourt -S mingw-w64-arpack++ --noconfirm
+yaourt -S mingw-w64-arpackpp --noconfirm
 yaourt -S mingw-w64-fann --noconfirm
 yaourt -S mingw-w64-intel-tbb --noconfirm
 yaourt -S mingw-w64-libmixmod --noconfirm
