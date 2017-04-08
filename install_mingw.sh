@@ -60,7 +60,7 @@ yaourt -S mingw-w64-agrum --noconfirm
 yaourt -S mingw-w64-libzip --noconfirm
 yaourt -S mingw-w64-qt4 --noconfirm --tmp $PWD || { rm /usr/*-w64-mingw32/bin/Qt*4.dll; pacman -U yaourt-tmp-root/mingw-w64-qt4-*.pkg.tar.xz --noconfirm; rm -r yaourt-tmp-root; }
 yaourt -S mingw-w64-qscintilla-qt4 --noconfirm
-yaourt -S mingw-w64-qwt --noconfirm
+yaourt -S mingw-w64-qwt-qt4 --noconfirm
 yaourt -S mingw-w64-iistaskpanel --noconfirm
 
 
@@ -73,5 +73,6 @@ yaourt -S mingw-w64-qt5-base-static --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-xmlpatterns --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-declarative --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-tools --noconfirm --tmp $PWD
+yaourt -S mingw-w64-qwt-qt5 --noconfirm
+
 yaourt -S mingw-w64-paraview --noconfirm --tmp $PWD
-# yaourt -S mingw-w64-qwt-qt5 --noconfirm
