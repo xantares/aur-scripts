@@ -73,6 +73,6 @@ yaourt -S mingw-w64-qt5-base-static --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-xmlpatterns --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-declarative --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-tools --noconfirm --tmp $PWD
-yaourt -S mingw-w64-qwt-qt5 --noconfirm
+yaourt -S mingw-w64-qwt --noconfirm
 
 yaourt -S mingw-w64-paraview --noconfirm --tmp $PWD
