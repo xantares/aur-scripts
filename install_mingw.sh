@@ -52,8 +52,6 @@ yaourt -S mingw-w64-fftw --noconfirm
 yaourt -S mingw-w64-python-bin --noconfirm
 yaourt -S mingw-w64-python2-bin --noconfirm
 yaourt -S mingw-w64-python35-bin --noconfirm
-yaourt -S mingw-w64-python34-bin --noconfirm
-yaourt -S mingw-w64-python33-bin --noconfirm
 yaourt -S mingw-w64-boost --noconfirm --tmp $PWD
 yaourt -S mingw-w64-agrum --noconfirm
 
