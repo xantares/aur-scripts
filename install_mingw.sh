@@ -2,9 +2,8 @@
 
 set -e
 
-#cd /usr/bin
-#patch -p0 -i /usr/share/makepkg-asroot/makepkg-asroot.patch
-
+# sudo visudo
+# Defaults timestamp_timeout=-1
 
 function install_conflict {
 
@@ -56,7 +55,7 @@ yaourt -S mingw-w64-boost --noconfirm --tmp $PWD
 yaourt -S mingw-w64-agrum --noconfirm
 
 yaourt -S mingw-w64-libzip --noconfirm
-yaourt -S mingw-w64-qt4 --noconfirm --tmp $PWD || { rm /usr/*-w64-mingw32/bin/Qt*4.dll; pacman -U yaourt-tmp-root/mingw-w64-qt4-*.pkg.tar.xz --noconfirm; rm -r yaourt-tmp-root; }
+yaourt -S mingw-w64-qt4 --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qscintilla-qt4 --noconfirm
 yaourt -S mingw-w64-qwt-qt4 --noconfirm
 yaourt -S mingw-w64-iistaskpanel --noconfirm
@@ -64,8 +63,8 @@ yaourt -S mingw-w64-iistaskpanel --noconfirm
 
 yaourt -S mingw-w64-freetype2-bootstrap --noconfirm
 yaourt -S mingw-w64-cairo-bootstrap --noconfirm
-yaourt -S mingw-w64-freetype2 --noconfirm || install_conflict /tmp/yaourt-tmp-root/mingw-w64-freetype2*.xz
-yaourt -S mingw-w64-cairo --noconfirm || install_conflict /tmp/yaourt-tmp-root/mingw-w64-cairo*.xz
+yaourt -S mingw-w64-freetype2 --noconfirm || install_conflict /tmp/yaourt-tmp-${USER}/mingw-w64-freetype2*.xz
+yaourt -S mingw-w64-cairo --noconfirm --tmp $PWD || install_conflict /tmp/yaourt-tmp-${USER}/mingw-w64-cairo*.xz
 #yaourt -S mingw-w64-qt5-base --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-base-static --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qt5-xmlpatterns --noconfirm --tmp $PWD
