@@ -28,7 +28,10 @@ gpg --recv C1A60EACE707FDA5 9766E084FB0F43D8 38EE757D69184620 9D5EAAF69013B842 #
 gpg --recv BBE43771487328A9 # gcc
 
 # remove all
-yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean" 
+yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean"
+
+# clean tmp to avoid overwrite
+rm -f /tmp/yaourt-tmp-${USER}/mingw-w64-*.xz
 
 # update
 yaourt -Syu --noconfirm
