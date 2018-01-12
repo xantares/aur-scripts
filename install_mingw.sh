@@ -32,6 +32,7 @@ yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean"
 
 # clean tmp to avoid overwrite
 rm -f /tmp/yaourt-tmp-${USER}/mingw-w64-*.xz
+rm -rf $PWD/yaourt-tmp-${USER}
 
 # update
 yaourt -Syu --noconfirm
