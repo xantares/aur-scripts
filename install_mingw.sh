@@ -27,12 +27,11 @@ gpg --recv D605848ED7E69871 D9C4D26D0E604491 0223A078DBFF4B66 BB5869F064EA74AB #
 gpg --recv C1A60EACE707FDA5 9766E084FB0F43D8 38EE757D69184620 9D5EAAF69013B842 # freetype2, pcre, xz, gnutls
 gpg --recv BBE43771487328A9 # gcc
 
+# clean to avoid overwrite
+rm -f /tmp/yaourt-tmp-${USER}/mingw-w64-*.xz $PWD/yaourt-tmp-${USER}/mingw-w64-*.xz
+
 # remove all
 yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean"
-
-# clean tmp to avoid overwrite
-rm -f /tmp/yaourt-tmp-${USER}/mingw-w64-*.xz
-rm -rf $PWD/yaourt-tmp-${USER}
 
 # update
 yaourt -Syu --noconfirm
@@ -85,3 +84,7 @@ yaourt -S mingw-w64-qt5-tools --noconfirm --tmp $PWD
 yaourt -S mingw-w64-qwt --noconfirm
 
 yaourt -S mingw-w64-paraview --noconfirm --tmp $PWD
+
+# cleanup
+rm -rf /tmp/yaourt-tmp-${USER}/mingw-w64-* $PWD/yaourt-tmp-${USER}/mingw-w64-*
+
