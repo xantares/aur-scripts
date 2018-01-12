@@ -25,6 +25,7 @@ sudo /tmp/conflict.sh
 
 gpg --recv D605848ED7E69871 D9C4D26D0E604491 0223A078DBFF4B66 BB5869F064EA74AB # gettext, openssl, dbus, readline
 gpg --recv C1A60EACE707FDA5 9766E084FB0F43D8 38EE757D69184620 9D5EAAF69013B842 # freetype2, pcre, xz, gnutls
+gpg --recv BBE43771487328A9 # gcc
 
 # remove all
 yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean" 
