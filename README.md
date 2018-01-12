@@ -1,11 +1,7 @@
 aur-scripts
 ===========
 
-scipts to interact with aur.archlinux.org
-
-migrate from aur3
------------------
-    ./migrate.sh pkgname1 [pkgname2]
+scripts to interact with aur.archlinux.org
 
 get
 ---
@@ -16,3 +12,10 @@ push
 ----
 
     ./put.sh pkgname1 [pkgname2] "git comment"
+
+
+migrate from aur3
+-----------------
+    ./migrate.sh pkgname1 [pkgname2]
+
+
