@@ -40,7 +40,7 @@ yaourt -S psp-libvorbis --noconfirm
 yaourt -S psp-libtremor --noconfirm
 yaourt -S --noconfirm psp-zziplib
 yaourt -S --noconfirm psp-opengl
-
+yaourt -S --noconfirm psp-cmake
 
 # cleanup
 rm -rf /tmp/yaourt-tmp-${USER}/psp-* $PWD/yaourt-tmp-${USER}/psp-*
