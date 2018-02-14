@@ -37,8 +37,8 @@ yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean"
 yaourt -Syu --noconfirm
 
 yaourt -S mingw-w64-binutils --noconfirm
-yaourt -S mingw-w64-headers-bootstrap --noconfirm
 yaourt -S mingw-w64-headers --noconfirm
+yaourt -S mingw-w64-headers-bootstrap --noconfirm
 yaourt -S mingw-w64-gcc-base --noconfirm
 yaourt -S mingw-w64-crt --noconfirm
 yaourt -S mingw-w64-winpthreads --noconfirm || install_conflict /tmp/yaourt-tmp-${USER}/mingw-w64-winpthreads*.xz
