@@ -41,8 +41,10 @@ yaourt -S mingw-w64-headers --noconfirm
 yaourt -S mingw-w64-headers-bootstrap --noconfirm
 yaourt -S mingw-w64-gcc-base --noconfirm
 yaourt -S mingw-w64-crt --noconfirm
-yaourt -S mingw-w64-winpthreads --noconfirm || install_conflict /tmp/yaourt-tmp-${USER}/mingw-w64-winpthreads*.xz
-yaourt -S mingw-w64-gcc --noconfirm --tmp $PWD || install_conflict $PWD/yaourt-tmp-${USER}/mingw-w64-gcc-*.xz
+sudo pacman -Rdd --noconfirm mingw-w64-headers-bootstrap
+yaourt -S mingw-w64-winpthreads --noconfirm
+sudo pacman -Rdd --noconfirm mingw-w64-gcc-base
+yaourt -S mingw-w64-gcc --noconfirm --tmp $PWD
 
 yaourt -S mingw-w64-exprtk-git --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
