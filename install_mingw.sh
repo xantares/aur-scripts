@@ -77,6 +77,7 @@ yaourt -S mingw-w64-iistaskpanel --noconfirm
 yaourt -S mingw-w64-freetype2-bootstrap --noconfirm
 yaourt -S mingw-w64-cairo-bootstrap --noconfirm
 yaourt -S mingw-w64-icu5x --noconfirm
+yaourt -S mingw-w64-rust-bin --noconfirm
 yaourt -S mingw-w64-freetype2 --noconfirm || install_conflict /tmp/yaourt-tmp-${USER}/mingw-w64-freetype2*.xz
 yaourt -S mingw-w64-cairo --noconfirm --tmp $PWD || install_conflict $PWD/yaourt-tmp-${USER}/mingw-w64-cairo*.xz
 #yaourt -S mingw-w64-qt5-base --noconfirm --tmp $PWD
