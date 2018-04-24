@@ -46,7 +46,6 @@ yaourt -S mingw-w64-winpthreads --noconfirm
 sudo pacman -Rdd --noconfirm mingw-w64-gcc-base
 yaourt -S mingw-w64-gcc --noconfirm --tmp $PWD
 
-yaourt -S mingw-w64-exprtk-git --noconfirm
 yaourt -S mingw-w64-dlfcn  --noconfirm
 yaourt -S mingw-w64-libsvm --noconfirm
 yaourt -S mingw-w64-libgnurx --noconfirm
