@@ -5,86 +5,56 @@ set -e
 # sudo visudo
 # Defaults timestamp_timeout=-1
 
-function install_conflict {
-
-cat > /tmp/conflict.sh << EOF
-#!/usr/bin/expect -f
-spawn pacman -U $1
-expect " are in conflict. Remove "
-sleep 1
-send "y\r"
-expect "Proceed with installation"
-sleep 1
-send "Y\r"
-expect eof
-EOF
-
-chmod a+rx /tmp/conflict.sh
-sudo /tmp/conflict.sh
-}
-
-gpg --recv D605848ED7E69871 D9C4D26D0E604491 0223A078DBFF4B66 BB5869F064EA74AB # gettext, openssl, dbus, readline
-gpg --recv C1A60EACE707FDA5 9766E084FB0F43D8 38EE757D69184620 9D5EAAF69013B842 # freetype2, pcre, xz, gnutls
-gpg --recv BBE43771487328A9 5CB4A9347B3B09DC # gcc, rust
-
-# clean to avoid overwrite
-rm -f /tmp/yaourt-tmp-${USER}/mingw-w64-*.xz $PWD/yaourt-tmp-${USER}/mingw-w64-*.xz
-
 # remove all
-yaourt -Rscnd mingw-w64 --noconfirm || echo "already clean"
+yaourt -Rscnd mingw-w64 || echo "already clean"
 
 # update
-yaourt -Syu --noconfirm
+yaourt -Syu
 
-yaourt -S mingw-w64-binutils --noconfirm
-yaourt -S mingw-w64-headers --noconfirm
-yaourt -S mingw-w64-headers-bootstrap --noconfirm
-yaourt -S mingw-w64-gcc-base --noconfirm
-yaourt -S mingw-w64-crt --noconfirm
-sudo pacman -Rdd --noconfirm mingw-w64-headers-bootstrap
-yaourt -S mingw-w64-winpthreads --noconfirm
-sudo pacman -Rdd --noconfirm mingw-w64-gcc-base
-yaourt -S mingw-w64-gcc --noconfirm --tmp $PWD
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-binutils
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-headers
+aurman -S --noconfirm --noedit mingw-w64-headers-bootstrap
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-gcc-base
+aurman -S --noconfirm --noedit mingw-w64-crt
+aurman -S --noconfirm --noedit mingw-w64-winpthreads
+aurman -S --noconfirm --noedit mingw-w64-gcc
 
-yaourt -S mingw-w64-dlfcn  --noconfirm
-yaourt -S mingw-w64-libsvm --noconfirm
-yaourt -S mingw-w64-libgnurx --noconfirm
-yaourt -S mingw-w64-muparser --noconfirm
-yaourt -S mingw-w64-lpsolve --noconfirm
-yaourt -S mingw-w64-fann --noconfirm
-yaourt -S mingw-w64-intel-tbb --noconfirm
-yaourt -S mingw-w64-libmixmod --noconfirm
-yaourt -S mingw-w64-nlopt --noconfirm
-yaourt -S mingw-w64-libxml2 --noconfirm
-yaourt -S mingw-w64-lapack --noconfirm
-yaourt -S mingw-w64-arpackpp --noconfirm
-yaourt -S mingw-w64-hmat-oss --noconfirm
-yaourt -S mingw-w64-fftw --noconfirm
-yaourt -S mingw-w64-python-bin --noconfirm
-yaourt -S mingw-w64-python2-bin --noconfirm
-yaourt -S mingw-w64-python35-bin --noconfirm
-yaourt -S mingw-w64-boost --noconfirm --tmp $PWD
-yaourt -S mingw-w64-agrum --noconfirm
+aurman -S --noconfirm --noedit mingw-w64-dlfcn
+aurman -S --noconfirm --noedit mingw-w64-libsvm
+aurman -S --noconfirm --noedit mingw-w64-libgnurx
+aurman -S --noconfirm --noedit mingw-w64-muparser
+aurman -S --noconfirm --noedit mingw-w64-lpsolve
+aurman -S --noconfirm --noedit mingw-w64-fann
+aurman -S --noconfirm --noedit mingw-w64-intel-tbb
+aurman -S --noconfirm --noedit mingw-w64-libmixmod
+aurman -S --noconfirm --noedit mingw-w64-nlopt
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-libxml2
+aurman -S --noconfirm --noedit mingw-w64-lapack
+aurman -S --noconfirm --noedit mingw-w64-arpackpp
+aurman -S --noconfirm --noedit mingw-w64-hmat-oss
+aurman -S --noconfirm --noedit mingw-w64-fftw
+aurman -S --noconfirm --noedit mingw-w64-python-bin
+aurman -S --noconfirm --noedit mingw-w64-python2-bin
+aurman -S --noconfirm --noedit mingw-w64-python35-bin
+aurman -S --noconfirm --noedit mingw-w64-boost
+aurman -S --noconfirm --noedit mingw-w64-agrum
 
-yaourt -S mingw-w64-libzip --noconfirm
-yaourt -S mingw-w64-qt4 --noconfirm --tmp $PWD
-yaourt -S mingw-w64-qscintilla-qt4 --noconfirm
-yaourt -S mingw-w64-qwt-qt4 --noconfirm
-yaourt -S mingw-w64-iistaskpanel --noconfirm
+aurman -S --noconfirm --noedit mingw-w64-libzip
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-qt4
+aurman -S --noconfirm --noedit mingw-w64-qscintilla-qt4
+aurman -S --noconfirm --noedit mingw-w64-qwt-qt4
+aurman -S --noconfirm --noedit mingw-w64-iistaskpanel
 
-yaourt -S mingw-w64-freetype2-bootstrap --noconfirm
-yaourt -S mingw-w64-cairo-bootstrap --noconfirm
-yaourt -S mingw-w64-harfbuzz --noconfirm
-sudo pacman -Rdd mingw-w64-freetype2-bootstrap --noconfirm
-yaourt -S mingw-w64-freetype2 --noconfirm
-yaourt -S mingw-w64-rust-bin --noconfirm
-yaourt -S mingw-w64-lzo mingw-w64-librsvg mingw-w64-poppler --noconfirm
-sudo pacman -Rdd mingw-w64-cairo-bootstrap --noconfirm
-yaourt -S mingw-w64-cairo --noconfirm
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-freetype2-bootstrap
+aurman -S --noconfirm --noedit mingw-w64-cairo-bootstrap
+aurman -S --noconfirm --noedit mingw-w64-harfbuzz
+aurman -S --noconfirm --noedit mingw-w64-freetype2
+aurman -S --noconfirm --noedit mingw-w64-rust-bin
+aurman -S --noconfirm --noedit mingw-w64-lzo mingw-w64-librsvg mingw-w64-poppler
+aurman -S --noconfirm --noedit mingw-w64-cairo
 
-yaourt -S mingw-w64-qwt --noconfirm --tmp $PWD
-yaourt -S mingw-w64-paraview --noconfirm --tmp $PWD
+aurman -S --noconfirm --noedit mingw-w64-qwt
+aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-paraview
 
 # cleanup
-rm -rf /tmp/yaourt-tmp-${USER}/mingw-w64-* $PWD/yaourt-tmp-${USER}/mingw-w64-*
-
+rm -rf ${HOME}/.cache/aurman/mingw-w64-*

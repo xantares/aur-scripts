@@ -5,43 +5,35 @@ set -e
 # sudo visudo
 # Defaults timestamp_timeout=-1
 
-# clean to avoid overwrite
-rm -f /tmp/yaourt-tmp-${USER}/psp-*.xz $PWD/yaourt-tmp-${USER}/psp-*.xz
-
 # remove all
-yaourt -Rscnd psp --noconfirm || echo "already clean"
+aurman -Rscnd psp || echo "already clean"
 
 # update
-yaourt -Syu --noconfirm
+aurman -S --noconfirm --noedit psp-binutils
+aurman -S --noconfirm --noedit psp-gcc-base
+aurman -S --noconfirm --noedit psp-sdk-base
+aurman -S --noconfirm --noedit psp-newlib
+aurman -S --noconfirm --noedit psp-gcc
+aurman -S --noconfirm --noedit psp-sdk
 
-yaourt -S psp-binutils --noconfirm
-yaourt -S psp-gcc-base --noconfirm
-yaourt -S psp-sdk-base --noconfirm
-yaourt -S psp-newlib --noconfirm
-sudo pacman -Rdd --noconfirm psp-gcc-base
-yaourt -S psp-gcc --noconfirm
-sudo pacman -Rdd --noconfirm psp-sdk-base
-yaourt -S psp-sdk --noconfirm
-
-yaourt -S psp-oslib --noconfirm
-yaourt -S psp-libmikmod --noconfirm
-yaourt -S psp-bzip2 --noconfirm
-yaourt -S psp-freetype2 --noconfirm
-#yaourt -S psp-gdb --noconfirm
-yaourt -S psp-libbulletml --noconfirm
-yaourt -S psp-libmad --noconfirm
-yaourt -S psp-sdl_gfx --noconfirm
-yaourt -S psp-sdl_ttf --noconfirm
-yaourt -S psp-sdl_mixer --noconfirm
-yaourt -S psp-pthreads-emb --noconfirm
-yaourt -S psp-sdl_image --noconfirm
-yaourt -S psp-libogg --noconfirm
-yaourt -S psp-libvorbis --noconfirm
-yaourt -S psp-libtremor --noconfirm
-yaourt -S --noconfirm psp-zziplib
-yaourt -S --noconfirm psp-opengl
-yaourt -S --noconfirm psp-openal
+aurman -S --noconfirm --noedit psp-oslib
+aurman -S --noconfirm --noedit psp-libmikmod
+aurman -S --noconfirm --noedit psp-bzip2
+aurman -S --noconfirm --noedit psp-freetype2
+#aurman -S --noconfirm --noedit psp-gdb
+aurman -S --noconfirm --noedit psp-libbulletml
+aurman -S --noconfirm --noedit psp-libmad
+aurman -S --noconfirm --noedit psp-sdl_gfx
+aurman -S --noconfirm --noedit psp-sdl_ttf
+aurman -S --noconfirm --noedit psp-sdl_mixer
+aurman -S --noconfirm --noedit psp-pthreads-emb
+aurman -S --noconfirm --noedit psp-sdl_image
+aurman -S --noconfirm --noedit psp-libogg
+aurman -S --noconfirm --noedit psp-libvorbis
+aurman -S --noconfirm --noedit psp-libtremor
+aurman -S --noconfirm --noedit psp-zziplib
+aurman -S --noconfirm --noedit psp-opengl
+aurman -S --noconfirm --noedit psp-openal
 
 # cleanup
-rm -rf /tmp/yaourt-tmp-${USER}/psp-* $PWD/yaourt-tmp-${USER}/psp-*
-
+rm -rf ${HOME}/.cache/aurman/psp-*
