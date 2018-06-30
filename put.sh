@@ -19,7 +19,7 @@ do
   pushd $pkg
 
   # push to aur
-  mksrcinfo
+  makepkg --printsrcinfo > .SRCINFO
   git add PKGBUILD .SRCINFO
   git commit -a -m "$comment"
   git push
