@@ -9,7 +9,7 @@ set -e
 yaourt -Rscnd mingw-w64 || echo "already clean"
 
 # update
-aurman -Syu --noconfirm
+sudo pacman -Syu
 
 aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-binutils
 aurman -S --noconfirm --noedit --pgp_fetch mingw-w64-headers
