@@ -6,7 +6,7 @@ set -e
 # Defaults timestamp_timeout=-1
 
 # remove all
-yaourt -Rscnd mingw-w64 || echo "already clean"
+sudo pacman -Rscnd mingw-w64 || echo "already clean"
 
 # update
 sudo pacman -Syu
