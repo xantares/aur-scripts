@@ -17,13 +17,21 @@ then
   exit
 fi
 
+# update pkgver
 oldver=`cat ${pkgname}/PKGBUILD|grep 'pkgver=' |sed "s|pkgver=\(.*\)|\\1|g"`
-
 echo "-- Updating ${pkgname}-${oldver} => ${pkgver}"
 sed -i "s|pkgver=${oldver}|pkgver=${pkgver}|g" ${pkgname}/PKGBUILD
-pushd ${pkgname} && makepkg -g > /tmp/checksum && popd
+
+# update checksum
+pushd ${pkgname}
+makepkg -g > /tmp/checksum
+popd
 checksum_type=`cat /tmp/checksum | grep 'sums='| sed "s|\(.*\)sums=.*|\\1|g"`
 checksum=`cat /tmp/checksum`
 sed -i "s|${checksum_type}sums=(.*)|${checksum}|g" ${pkgname}/PKGBUILD
-pushd ${pkgname} && git diff && popd
+
+# show diff
+pushd ${pkgname}
+git diff
+popd
 echo "-- If ok: ./put.sh ${pkgname} ${pkgver}"
