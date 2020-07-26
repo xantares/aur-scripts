@@ -4,6 +4,5 @@ pkgs=$*
 
 for pkg in $pkgs
 do
-  git clone ssh://aur@aur4.archlinux.org/$pkg.git
-  #yaourt -G $pkg --noconfirm
+  git clone ssh://aur@aur.archlinux.org/$pkg.git
 done

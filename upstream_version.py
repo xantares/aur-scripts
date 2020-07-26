@@ -57,6 +57,8 @@ class Github(VersionFromFeed):
         if "github.com" not in meta_yaml["url"]:
             return
         split_url = meta_yaml["url"].lower().split("/")
+        if not "github.com" in split_url:
+            return
         package_owner = split_url[split_url.index("github.com") + 1]
         gh_package_name = split_url[split_url.index("github.com") + 2]
         return "https://github.com/{}/{}/releases.atom".format(

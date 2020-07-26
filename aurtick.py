@@ -5,7 +5,7 @@ from upstream_version import get_latest_version
 from distutils.version import LooseVersion, StrictVersion
 
 rpc = RPC.AurRpc()
-hits = rpc.search('mingw-w64')
+hits = rpc.search('python-')
 for pkg in hits:
     name = pkg['PackageBase']
     if name == 'mingw-w64-gtest':
@@ -25,6 +25,7 @@ for pkg in hits:
         if latest_version is not None:
             try:
                 StrictVersion(latest_version)
+                StrictVersion(package_version)
             except ValueError:
                 continue
             else:
